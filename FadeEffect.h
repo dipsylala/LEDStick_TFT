@@ -22,7 +22,7 @@ private:
 	PaintingStateMachine *m_state_machine;
 
 public:
-	void start_painting(FadeConfiguration &fade_configuration, int pulse_delay);
+	void start_painting(FadeConfiguration &fade_configuration, uint32_t pulse_delay, uint32_t steps_between_colours);
 	FadeEffect(PaintingStateMachine * state_machine, LEDStick * pStrip);
 };
 

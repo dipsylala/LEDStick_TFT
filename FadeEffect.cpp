@@ -1,13 +1,12 @@
 #include "FadeEffect.h"
 
-void FadeEffect::start_painting(FadeConfiguration &fade_configuration, int pulse_delay)
+void FadeEffect::start_painting(FadeConfiguration &fade_configuration, uint32_t pulse_delay, uint32_t steps_between_colours)
 {
 	m_state_machine->reset();
 
 	boolean exit_pressed = false;
 	int colour_index = 0;
 	int next_colour_index = 1;
-	uint32_t steps_between_colours = 30;
 	uint32_t current_colour_step = 0;
 
 	m_strip->clear_strip();

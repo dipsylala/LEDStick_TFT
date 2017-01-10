@@ -20,12 +20,14 @@ class FadeEffectSetup : public BaseEffectSetup, FadeBase
 private:
 	typedef struct
 	{
-		int slower_button;
-		int faster_button;
-		int previous_config;
-		int next_config;
-		int back_button;
-		int go_button;
+		uint32_t slower_button;
+		uint32_t faster_button;
+		uint32_t steps_minus;
+		uint32_t steps_plus;
+		uint32_t previous_config;
+		uint32_t next_config;
+		uint32_t back_button;
+		uint32_t go_button;
 	} FadeSelectionButtons;
 
 	FadeSelectionButtons m_fade_selection_buttons;
@@ -35,6 +37,7 @@ private:
 	void initialise_main_interface(FadeSelectionButtons &buttons);
 	void set_selected_configuration(FadeConfiguration &fade_configuration);
 	void show_current_delay(uint32_t delay);
+	void show_current_steps(uint32_t steps);
 	void setup_loop();
 
 public:
