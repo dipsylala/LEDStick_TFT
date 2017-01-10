@@ -1,6 +1,5 @@
 #include "SolidEffectSetup.h"
 
-
 void SolidEffectSetup::initialise_main_interface(SolidSelectionButtons &buttons)
 {
 	m_hardware.pButtons->deleteAllButtons();

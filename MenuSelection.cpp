@@ -87,8 +87,9 @@ void MenuSelection::run()
 		{
 			ConfigurationData config_data = m_configuration_manager->engage();
 			initialise_mode_selection_menu();
-			set_selected_processor(selected_processor_index);
 			m_hardware.pStrip->set_stick_length(config_data.num_pixels);
+
+			set_selected_processor(selected_processor_index);
 		}
 
 		if (pressed_button == m_select_button)

@@ -14,8 +14,10 @@ void BitmapEffectSetup::initialise_main_interface(BitmapSelectionButtons &button
 	buttons.faster_frame = m_hardware.pButtons->addButton(270, 20, 40, 40, "+");
 
 	m_hardware.pTft->setColor(255, 255, 255);
-	m_hardware.pTft->print("Repeat", 10, 100);
-	buttons.repeat_paint_toggle = m_hardware.pButtons->addButton(110, 90, 40, 40, "", BUTTON_SYMBOL);
+	m_hardware.pTft->print("Repeat", 10, 90);
+	buttons.repeat_paint_toggle = m_hardware.pButtons->addButton(110, 80, 40, 40, "", BUTTON_SYMBOL);
+	m_hardware.pTft->print("Offset", 10, 130);
+	buttons.random_offset_toggle = m_hardware.pButtons->addButton(110, 120, 40, 40, "", BUTTON_SYMBOL);
 
 	buttons.previous_bitmap = m_hardware.pButtons->addButton(225, 180, 40, 40, "a", BUTTON_SYMBOL);
 	buttons.next_bitmap = m_hardware.pButtons->addButton(270, 180, 40, 40, "b", BUTTON_SYMBOL);
@@ -149,6 +151,10 @@ void BitmapEffectSetup::display_repeat(BitmapSelectionButtons &buttons, boolean 
 	m_hardware.pButtons->relabelButton(buttons.repeat_paint_toggle, repeat == true?(char*)"T\0":(char*)(" \0"), true);
 }
 
+void BitmapEffectSetup::display_random_offset(BitmapSelectionButtons &buttons, boolean random_offset)
+{
+	m_hardware.pButtons->relabelButton(buttons.random_offset_toggle, random_offset == true ? (char*)"T\0" : (char*)(" \0"), true);
+}
 
 void BitmapEffectSetup::display_frame_delay(uint32_t frame_delay)
 {
@@ -252,6 +258,7 @@ void BitmapEffectSetup::setup_loop()
 	int pressed_button;
 	boolean exit_pressed = false;
 	boolean repeat_bitmap = false;
+	boolean random_offset = false;
 
 	uint32_t frame_delay = 30;
 
@@ -262,7 +269,9 @@ void BitmapEffectSetup::setup_loop()
 	retrieve_bitmap_details(*(m_bitmap_filenames[m_current_file_index]));
 	calculate_time_to_display(frameDelay, m_current_bitmap);
 	display_repeat(bitmap_selection_buttons, repeat_bitmap);
+	display_random_offset(bitmap_selection_buttons, random_offset);
 	display_current_bitmap(110, 30, 40, 40);
+
 
 	while (exit_pressed == false)
 	{
@@ -326,10 +335,16 @@ void BitmapEffectSetup::setup_loop()
 			display_repeat(bitmap_selection_buttons, repeat_bitmap);
 		}
 
+		if (pressed_button == bitmap_selection_buttons.random_offset_toggle)
+		{
+			random_offset = !random_offset;
+			display_random_offset(bitmap_selection_buttons, random_offset);
+		}
+
 		if (pressed_button == bitmap_selection_buttons.go_button)
 		{
 			prepare_screen_for_effect();
-			m_effect->start_painting(m_current_bitmap, frame_delay, repeat_bitmap);
+			m_effect->start_painting(m_current_bitmap, frame_delay, repeat_bitmap, random_offset);
 			
 			initialise_screen_base(String("Bitmap mode"));
 			initialise_main_interface(bitmap_selection_buttons);
@@ -338,6 +353,7 @@ void BitmapEffectSetup::setup_loop()
 			display_frame_delay(frame_delay);
 			calculate_time_to_display(frame_delay, m_current_bitmap);
 			display_repeat(bitmap_selection_buttons, repeat_bitmap);
+			display_random_offset(bitmap_selection_buttons, random_offset);
 			display_current_bitmap(110, 30, 40, 40);
 		}
 

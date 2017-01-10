@@ -1,6 +1,6 @@
 #include "BitmapEffect.h"
 
-void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool repeat)
+void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool repeat, bool random_offset)
 {
 	m_state_machine->reset();
 
@@ -15,9 +15,17 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 	bitmap_to_display.read_bitmap_info(bitmap_file);
 
 	uint16_t bitmap_width = bitmap_to_display.bitmap_info.imgWidth;
-	RGB *rgb_line = new RGB[bitmap_width];
+	
+	uint16_t num_pixels = m_strip->get_stick_length();
+
+	RGB *rgb_line = new RGB[num_pixels];
 
 	uint32_t bitmap_line = 0;
+	uint32_t offset = 0;
+	if (random_offset == true)
+	{
+		offset = get_random_position(num_pixels, bitmap_to_display);
+	}
 
 	while (exit_pressed == false)
 	{
@@ -32,9 +40,10 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 		}
 		case Painting:
 		{
-			bitmap.read_image_line(bitmap_file, bitmap_line, rgb_line, bitmap_width);
+			memset(rgb_line, 0, num_pixels * sizeof (RGB));
+			bitmap.read_image_line(bitmap_file, bitmap_line, rgb_line + offset, bitmap_width);
 
-			m_strip->set_rgb_strip_color(rgb_line, bitmap_width);
+			m_strip->set_rgb_strip_color(rgb_line, num_pixels);
 
 			bitmap_line++;
 
@@ -42,6 +51,11 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 			{
 				if (repeat == true)
 				{
+					if (random_offset == true)
+					{
+						offset = get_random_position(m_strip->get_stick_length(), bitmap_to_display);
+					}
+					
 					bitmap_line = 0;
 				}
 				else
@@ -66,6 +80,11 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 	bitmap_file.close();
 }
 
+
+uint16_t BitmapEffect::get_random_position(uint16_t num_pixels, Bitmap bitmap)
+{
+	return random(0, num_pixels - bitmap.bitmap_info.imgWidth);
+}
 
 BitmapEffect::BitmapEffect(PaintingStateMachine * state_machine, LEDStick * pStrip)
 {

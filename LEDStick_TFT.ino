@@ -7,11 +7,6 @@ Refactored and rewritten by Marcus Watson
 
 */
 
-//TODO: 
-// Eventually refactor to remove configuration from the effect loop. 
-//   Use DI to inject configuration into each Effect Processor so we 
-//   can have different ways of configuring (LCD/TFT/Bluetooth)
-
 #if defined(__AVR__)
 #include <UTouch.h>
 #include <UTFT_Buttons.h>

@@ -16,7 +16,7 @@
 
 typedef struct  {
 	char version[4];
-	uint32_t num_pixels;
+	uint16_t num_pixels;
 } ConfigurationData;
 
 class EepromConfiguration

@@ -24,19 +24,19 @@ private:
 
 	typedef struct
 	{
-		uint32_t cancel_button;
-		uint32_t ok_button;
-		uint32_t pixel_up;
-		uint32_t pixel_one;
-		uint32_t pixel_plus_twenty;
-		uint32_t pixel_down;
+		uint16_t cancel_button;
+		uint16_t ok_button;
+		uint16_t pixel_up;
+		uint16_t pixel_one;
+		uint16_t pixel_plus_twenty;
+		uint16_t pixel_down;
 	} ConfigurationManagerButtons;
 
 	StickHardware m_hardware;
 
 	ConfigurationData setup_loop();
 	void create_user_interface(ConfigurationManagerButtons *buttons);
-	void display_current_pixels(uint32_t previous_pixel_index, uint32_t current_pixel_index);
+	void display_current_pixels(uint16_t previous_pixel_index, uint16_t current_pixel_index);
 
 public:
 	ConfigurationData engage();

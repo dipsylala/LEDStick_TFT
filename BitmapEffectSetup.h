@@ -1,7 +1,7 @@
-// BitmapProcessor.h
+// BitmapEffectSetup.h
 
-#ifndef _BITMAPPROCESSOR_h
-#define _BITMAPPROCESSOR_h
+#ifndef _BITMAPEFFECTSETUP_h
+#define _BITMAPEFFECTSETUP_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -26,20 +26,21 @@ private:
 
 	int frameDelay = 10;
 	String *m_bitmap_filenames[255];
-	int m_num_bitmaps = 0;
+	uint16_t m_num_bitmaps = 0;
 
 	BitmapEffect *m_effect;
 
 	typedef struct
 	{
-		int previous_bitmap;
-		int next_bitmap;
-		int slower_frame;
-		int faster_frame;
-		int paint_button;
-		int repeat_paint_toggle;
-		int back_button;
-		int go_button;
+		uint16_t previous_bitmap;
+		uint16_t next_bitmap;
+		uint16_t slower_frame;
+		uint16_t faster_frame;
+		uint16_t paint_button;
+		uint16_t repeat_paint_toggle;
+		uint16_t random_offset_toggle;
+		uint16_t back_button;
+		uint16_t go_button;
 	} BitmapSelectionButtons;
 
 	typedef struct
@@ -55,6 +56,7 @@ private:
 	void calculate_time_to_display(uint32_t frame_delay, Bitmap bitmap);
 	void display_frame_delay(uint32_t frame_delay);
 	void display_repeat(BitmapSelectionButtons &buttons, boolean repeat);
+	void display_random_offset(BitmapSelectionButtons &buttons, boolean random_offset);
 	void display_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height);
 	void retrieve_bitmap_details(String bitmap_filename);
 	void initialise_sd_read_menu(SdCardCancelButtons &buttons);

@@ -19,8 +19,10 @@ private:
 	LEDStick *m_strip;
 	PaintingStateMachine *m_state_machine;
 
+	uint16_t get_random_position(uint16_t num_pixels, Bitmap bitmap);
+
 public:
-	void start_painting(Bitmap &bitmap, uint32_t frame_delay, bool repeat);
+	void start_painting(Bitmap &bitmap, uint32_t frame_delay, bool repeat, bool random_offset);
 	BitmapEffect(PaintingStateMachine * state_machine, LEDStick * pStrip);
 };
 

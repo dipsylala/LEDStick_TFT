@@ -65,4 +65,6 @@ bool PaintingStateMachine::read_state_jump()
 PaintingStateMachine::PaintingStateMachine(StickHardware hardware)
 {
 	m_hardware = hardware;
+
+	pinMode(EFFECT_TRIGGER, INPUT);
 }

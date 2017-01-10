@@ -21,7 +21,7 @@ void ConfigurationManager::create_user_interface(ConfigurationManagerButtons *bu
 	m_hardware.pButtons->drawButtons();
 }
 
-void ConfigurationManager::display_current_pixels(uint32_t previous_pixel_index, uint32_t current_pixel_index)
+void ConfigurationManager::display_current_pixels(uint16_t previous_pixel_index, uint16_t current_pixel_index)
 {
 	m_hardware.pStrip->set_pixel_color(previous_pixel_index, 0, 0, 0);
 	m_hardware.pStrip->set_pixel_color(current_pixel_index, 255, 255, 255);
@@ -44,8 +44,8 @@ ConfigurationData ConfigurationManager::setup_loop()
 	boolean ok_pressed = false;
 	boolean cancel_pressed = false;
 
-	uint32_t previous_pixel_index = 0;
-	uint32_t pixel_index = configuration_settings.num_pixels - 1 ;
+	uint16_t previous_pixel_index = 0;
+	uint16_t pixel_index = configuration_settings.num_pixels - 1 ;
 
 	m_hardware.pStrip->set_stick_length(300);
 
@@ -100,6 +100,7 @@ ConfigurationData ConfigurationManager::setup_loop()
 	{
 		configuration_settings.num_pixels = pixel_index + 1;
 		configuration.write_configuration(configuration_settings);
+		m_hardware.pStrip->set_pixel_color(pixel_index, 0, 0, 0);
 	}
 
 	if (cancel_pressed)
