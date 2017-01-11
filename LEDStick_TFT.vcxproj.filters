@@ -54,9 +54,6 @@
     <ClInclude Include="PaintingStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EffectSolid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SolidEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>

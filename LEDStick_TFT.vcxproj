@@ -86,7 +86,6 @@
     <ClInclude Include="BitmapEffectSetup.h" />
     <ClInclude Include="ConfigurationManager.h" />
     <ClInclude Include="EepromConfiguration.h" />
-    <ClInclude Include="EffectSolid.h" />
     <ClInclude Include="FadeBase.h" />
     <ClInclude Include="FadeConfiguration.h" />
     <ClInclude Include="FadeEffect.h" />
