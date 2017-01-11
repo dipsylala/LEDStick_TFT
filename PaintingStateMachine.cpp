@@ -16,6 +16,8 @@ PaintingState PaintingStateMachine::get_state()
 	int state = (int)current_state;
 	state++;
 	current_state = (PaintingState)state;
+
+	return current_state;
 }
 
 void PaintingStateMachine::set_state(PaintingState state)

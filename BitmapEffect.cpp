@@ -27,6 +27,8 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 		offset = get_random_position(num_pixels, bitmap_to_display);
 	}
 
+	unsigned long start = millis();
+
 	while (exit_pressed == false)
 	{
 		PaintingState painting_state = m_state_machine->get_state();
@@ -60,6 +62,8 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 				}
 				else
 				{
+					unsigned long stop = millis();
+					Serial.println("Duration: " + String(stop - start));
 					m_state_machine->set_state(StoppedPainting);
 				}
 			}

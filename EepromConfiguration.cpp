@@ -1,6 +1,6 @@
 #include "EepromConfiguration.h"
 
-ConfigurationData EepromConfiguration::assign_default_values()
+void EepromConfiguration::assign_default_values()
 {
 	strncpy (loaded_data.version, CONFIG_VERSION, 3);
 	loaded_data.num_pixels = 1;

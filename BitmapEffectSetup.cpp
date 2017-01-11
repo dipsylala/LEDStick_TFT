@@ -173,7 +173,12 @@ void BitmapEffectSetup::calculate_time_to_display(uint32_t frame_delay, Bitmap b
 {
 	uint32_t max_distance = bitmap.bitmap_info.imgHeight > bitmap.bitmap_info.imgWidth ? bitmap.bitmap_info.imgHeight : bitmap.bitmap_info.imgWidth;
 
-	float total_time = (max_distance * frame_delay) / (float)1000;
+
+	Serial.println("Height: " + String(bitmap.bitmap_info.imgHeight));
+	Serial.println("Width : " + String(bitmap.bitmap_info.imgWidth));
+	Serial.println("Frame Delay: " + String(frameDelay));
+
+	float total_time = ((bitmap.bitmap_info.imgHeight * frameDelay) * 6) / (float)1000;
 
 	m_hardware.pTft->print(String(total_time) + " Secs  ", 170, 70);
 }

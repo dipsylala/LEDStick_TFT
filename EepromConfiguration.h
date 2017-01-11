@@ -23,7 +23,7 @@ class EepromConfiguration
 {
 private:
 	ConfigurationData loaded_data;
-	ConfigurationData assign_default_values();
+	void assign_default_values();
 
 public:
 	ConfigurationData read_configuration();

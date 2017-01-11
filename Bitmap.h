@@ -42,7 +42,7 @@ class Bitmap
 
 	 String filename;
 	 int32_t read_bitmap_info(File bitmap_file);
-	 void read_image_line(File bitmap_file, uint32_t line_number, RGB*rgb_line, int32_t rgb_length);
+	 void read_image_line(File bitmap_file, uint32_t line_number, RGB*rgb_line, uint32_t rgb_length);
 };
 
 
