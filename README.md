@@ -24,9 +24,11 @@ Look at SolidEffect.cpp, SolidEffect.h, SolidEffectSetup.cpp and SolidEffectSetu
 
 Create a new effect? Add it in setup() in LEDStick_TFT.ino when we create the other effects and you should be golden.
 
+Effects are disconnected from their Setups for a reason. I'll be porting this to different platforms. Currently porting to a Teensy controlled by Bluetooth. The effect remains the same, but the configuration comes via bluetooth and there's no touchscreen if you want to progress the LED effect. If that's the case, use a different StickHarware, and update your StateMachine to only look for GPIO pins. Simples.
+
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+More effects! :) Bitmaps are looking a little crowded now.
 
 ## License
 
