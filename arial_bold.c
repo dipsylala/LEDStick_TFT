@@ -3,6 +3,8 @@
 // Font size    : 16x16 pixels
 // Memory usage : 3044 bytes
 // Submitted by : MBWK
+// Origin: http://www.rinkydinkelectronics.com/r_fonts.php
+// License: Public Domain
 
 #if defined(__AVR__)
 	#include <avr/pgmspace.h>

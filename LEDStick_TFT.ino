@@ -1,11 +1,22 @@
-/*
-LEDStick by  Justin Barkby
+// This file is part of LEDStick_TFT.
+// 
+// LEDStick_TFT is free software : you can redistribute it and / or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// LEDStick_TFT is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-Original code by Michael Ross (http://mrossphoto.com/wordpress32/)
-Modified from LCD to TFT touchscreen including a couple of features by Justin Barkby
-Refactored and rewritten by Marcus Watson
+// Credit where credit's due
+// Ideas and concepts from LEDStick by Justin Barkby who created a
+// TFT-based version of Michael Ross' code (http://mrossphoto.com/)
 
-*/
 
 #if defined(__AVR__)
 #include <UTouch.h>

@@ -2,6 +2,8 @@
 // Font type    : Full (95 characters)
 // Font size    : 32x32 pixels
 // Memory usage : 12164 bytes
+// Origin: http://www.rinkydinkelectronics.com/r_fonts.php
+// License: Public Domain
 
 #if defined(__AVR__)
     #include <avr/pgmspace.h>
