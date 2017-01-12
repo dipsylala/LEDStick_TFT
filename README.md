@@ -1,6 +1,6 @@
 ## Synopsis
 
-LEDStick_TFT is designed primarily for lightsticks based on Michael Ross' original tutorial (http://mrossphoto.com/digital-light-wand/)
+LEDStick_TFT is designed primarily for lightsticks based on Michael Ross' original tutorial (http://mrossphoto.com/digital-light-wand/), and TFT concept was added by Justin Barkby (https://github.com/barkby/LEDStick)
 
 We've taken the original concept and hooked it up to a Mega 2560, Sainsmart TFT shield, and Sainsmart TFT (TFT_320QVT). The TFT goes through UTFT so in theory any UTFT supported TFT's should be ok.
 
@@ -33,6 +33,8 @@ More effects! :) Bitmaps are looking a little crowded now so maybe not more we c
 Multiple bitmaps in one painting session, controllable by GPIO? Code is there, but looking at UI and how to control it mid-paint.
 
 Read Fades in a basic form from the SD card. Structure already there in read_fades_from_source in FadeEffectSetup. JSON/XML read into the structure. 
+
+If you wanted to, you could switch out the TFT and go back to LCD. The interface is held in MenuSelection.cpp and *Setup.cpp. Those essentially hold the UI.
 
 ## License
 
