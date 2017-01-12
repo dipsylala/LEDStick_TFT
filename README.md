@@ -36,6 +36,8 @@ Read Fades in a basic form from the SD card. Structure already there in read_fad
 
 If you wanted to, you could switch out the TFT and go back to LCD. The interface is held in MenuSelection.cpp and *Setup.cpp. Those essentially hold the UI.
 
+Want to change the stick? Look in LEDStick.cpp - that's the wrapper around the NeoPixel so you could change it to be the wrapper for.... whatever.
+
 ## License
 
 License is GPLv3. I'd like folks to contribute not steal. Make money from good support and selling the hardware, but not off this code.
