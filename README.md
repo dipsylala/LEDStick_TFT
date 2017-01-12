@@ -28,7 +28,11 @@ Effects are disconnected from their Setups for a reason. I'll be porting this to
 
 ## Contributors
 
-More effects! :) Bitmaps are looking a little crowded now.
+More effects! :) Bitmaps are looking a little crowded now so maybe not more we can do there without introducing subscreens. 
+
+Multiple bitmaps in one painting session, controllable by GPIO? Code is there, but looking at UI and how to control it mid-paint.
+
+Read Fades in a basic form from the SD card. Structure already there in read_fades_from_source in FadeEffectSetup. JSON/XML read into the structure. 
 
 ## License
 
