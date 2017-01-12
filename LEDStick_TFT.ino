@@ -94,16 +94,16 @@ void setup()
 
 	PaintingStateMachine state_machine(hardware);
 
-	int num_processors = 4;
-	BaseEffectSetup **processors = new BaseEffectSetup*[num_processors];
-	processors[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
-	processors[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
-	processors[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
-	processors[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
+	int num_effects = 4;
+	BaseEffectSetup **effects = new BaseEffectSetup*[num_effects];
+	effects[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
+	effects[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
+	effects[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
+	effects[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
 
 	ConfigurationManager *configuration_manager = new ConfigurationManager(hardware);
 
-	MenuSelection *menu_selection = new MenuSelection(hardware, processors, num_processors, configuration_manager);
+	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, configuration_manager);
 	menu_selection->run();
 
 }

@@ -15,11 +15,11 @@
 
 #include "MenuSelection.h"
 
-MenuSelection::MenuSelection(StickHardware hardware, BaseEffectSetup **processors, int num_processors, ConfigurationManager *configuration_manager)
+MenuSelection::MenuSelection(StickHardware hardware, BaseEffectSetup **effects, int num_effects, ConfigurationManager *configuration_manager)
 {
 	m_hardware = hardware;
-	m_processors = processors;
-	m_total_processors = num_processors;
+	m_effects = effects;
+	m_total_effects = num_effects;
 	m_configuration_manager = configuration_manager;
 }
 
@@ -42,7 +42,7 @@ void MenuSelection::initialise_mode_selection_menu()
 void MenuSelection::set_selected_processor(int selected_mode)
 {
 	char nameBuf[50];
-	m_processors[selected_mode]->name().toCharArray(nameBuf, 50);
+	m_effects[selected_mode]->name().toCharArray(nameBuf, 50);
 	m_hardware.pButtons->relabelButton(m_select_button, nameBuf, true);
 	m_hardware.pButtons->drawButton(m_select_button);
 }
@@ -79,13 +79,13 @@ void MenuSelection::run()
 				}
 				else
 				{
-					selected_processor_index = m_total_processors - 1;
+					selected_processor_index = m_total_effects - 1;
 				}
 			}
 
 			if (pressed_button == m_next_button)
 			{
-				if (selected_processor_index < m_total_processors - 1)
+				if (selected_processor_index < m_total_effects - 1)
 				{
 					selected_processor_index++;
 				}
@@ -109,7 +109,7 @@ void MenuSelection::run()
 
 		if (pressed_button == m_select_button)
 		{
-			m_processors[selected_processor_index]->engage();
+			m_effects[selected_processor_index]->engage();
 			initialise_mode_selection_menu();
 			set_selected_processor(selected_processor_index);
 		}
