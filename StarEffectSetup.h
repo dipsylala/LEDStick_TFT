@@ -27,7 +27,7 @@
 #include "RGBController.h"
 #include "StarEffect.h"
 
-class StarEffectSetup : public BaseEffectSetup
+class StarEffectSetup : public EffectSetupBase
 {
 private:
 	typedef struct

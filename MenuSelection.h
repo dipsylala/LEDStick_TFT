@@ -33,7 +33,7 @@ class MenuSelection
 {
 private:
 	StickHardware m_hardware;
-	BaseEffectSetup **m_effects;
+	EffectSetupBase **m_effect_setups;
 	ConfigurationManager *m_configuration_manager;
 
 	uint32_t m_previous_button;
@@ -47,7 +47,7 @@ private:
 	void set_selected_processor(int selected_mode);
 
 public:
-	MenuSelection(StickHardware hardware, BaseEffectSetup **processors, int num_processors, ConfigurationManager *configuration_manager);
+	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, ConfigurationManager *configuration_manager);
 	void run();
 };
 

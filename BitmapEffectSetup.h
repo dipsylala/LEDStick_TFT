@@ -31,7 +31,7 @@
 
 #define SD_PIN 53  // SD card CS pin
 
-class BitmapEffectSetup : public BaseEffectSetup
+class BitmapEffectSetup : public EffectSetupBase
 {
 private:
 	int m_current_file_index = 0;

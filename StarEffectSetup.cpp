@@ -101,7 +101,7 @@ void StarEffectSetup::setup_loop()
 
 StarEffectSetup::StarEffectSetup(StickHardware hardware, 
 							PaintingStateMachine *state_machine,
-							StarEffect *effect) : BaseEffectSetup(hardware, state_machine)
+							StarEffect *effect) : EffectSetupBase(hardware, state_machine)
 {
 	m_effect = effect;
 }

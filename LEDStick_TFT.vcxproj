@@ -81,7 +81,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseEffectSetup.h" />
+    <ClInclude Include="EffectSetupBase.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BitmapEffect.h" />
     <ClInclude Include="BitmapInfo.h" />
@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arial_bold.c" />
-    <ClCompile Include="BaseEffectSetup.cpp" />
+    <ClCompile Include="EffectSetupBase.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapEffect.cpp" />
     <ClCompile Include="BitmapEffectSetup.cpp" />

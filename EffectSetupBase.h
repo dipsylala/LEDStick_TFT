@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef _BASEPROCESSOR_h
-#define _BASEPROCESSOR_h
+#ifndef _EFFECTSETUPBASE_h
+#define _EFFECTSETUPBASE_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -29,7 +29,7 @@
 extern uint8_t SmallFont[];
 extern uint8_t arial_bold[];
 
-class BaseEffectSetup
+class EffectSetupBase
 {
 protected:
 
@@ -46,7 +46,7 @@ protected:
 	virtual void setup_loop() = 0;
 
 public:
-	BaseEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine);
+	EffectSetupBase(StickHardware hardware, PaintingStateMachine *state_machine);
 	virtual String name() = 0;
 	virtual void engage() = 0;
 };

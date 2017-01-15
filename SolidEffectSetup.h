@@ -27,7 +27,7 @@
 #include "PaintingState.h"
 #include "SolidEffect.h"
 
-class SolidEffectSetup : public BaseEffectSetup
+class SolidEffectSetup : public EffectSetupBase
 {
 private:
 	typedef struct

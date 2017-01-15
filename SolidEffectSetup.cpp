@@ -72,7 +72,7 @@ void SolidEffectSetup::setup_loop()
 	}
 }
 
-SolidEffectSetup::SolidEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, SolidEffect *effect) : BaseEffectSetup(hardware, state_machine)
+SolidEffectSetup::SolidEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, SolidEffect *effect) : EffectSetupBase(hardware, state_machine)
 {
 	m_effect = effect;
 }

@@ -28,7 +28,7 @@
 #include "FadeBase.h"
 #include "FadeEffect.h"
 
-class FadeEffectSetup : public BaseEffectSetup, FadeBase
+class FadeEffectSetup : public EffectSetupBase, FadeBase
 {
 private:
 	typedef struct

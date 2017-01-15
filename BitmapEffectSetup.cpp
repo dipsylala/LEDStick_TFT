@@ -380,7 +380,7 @@ void BitmapEffectSetup::setup_loop()
 }
 
 
-BitmapEffectSetup::BitmapEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, BitmapEffect *effect) : BaseEffectSetup(hardware, state_machine)
+BitmapEffectSetup::BitmapEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, BitmapEffect *effect) : EffectSetupBase(hardware, state_machine)
 {
 	m_effect = effect;
 }

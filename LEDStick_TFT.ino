@@ -95,7 +95,7 @@ void setup()
 	PaintingStateMachine state_machine(hardware);
 
 	int num_effects = 4;
-	BaseEffectSetup **effects = new BaseEffectSetup*[num_effects];
+	EffectSetupBase **effects = new EffectSetupBase*[num_effects];
 	effects[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
 	effects[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
 	effects[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
@@ -106,6 +106,12 @@ void setup()
 	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, configuration_manager);
 	menu_selection->run();
 
+	for (uint32_t i = 0; i < num_effects; i++)
+	{
+		delete effects[i];
+	}
+
+	delete effects;
 }
 
 void loop()

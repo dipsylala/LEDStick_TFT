@@ -245,7 +245,7 @@ void FadeEffectSetup::setup_loop()
 }
 
 
-FadeEffectSetup::FadeEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, FadeEffect *effect) : BaseEffectSetup(hardware, state_machine)
+FadeEffectSetup::FadeEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, FadeEffect *effect) : EffectSetupBase(hardware, state_machine)
 {
 	m_effect = effect;
 }

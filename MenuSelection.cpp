@@ -15,10 +15,10 @@
 
 #include "MenuSelection.h"
 
-MenuSelection::MenuSelection(StickHardware hardware, BaseEffectSetup **effects, int num_effects, ConfigurationManager *configuration_manager)
+MenuSelection::MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, ConfigurationManager *configuration_manager)
 {
 	m_hardware = hardware;
-	m_effects = effects;
+	m_effect_setups = effects;
 	m_total_effects = num_effects;
 	m_configuration_manager = configuration_manager;
 }
@@ -42,7 +42,7 @@ void MenuSelection::initialise_mode_selection_menu()
 void MenuSelection::set_selected_processor(int selected_mode)
 {
 	char nameBuf[50];
-	m_effects[selected_mode]->name().toCharArray(nameBuf, 50);
+	m_effect_setups[selected_mode]->name().toCharArray(nameBuf, 50);
 	m_hardware.pButtons->relabelButton(m_select_button, nameBuf, true);
 	m_hardware.pButtons->drawButton(m_select_button);
 }
@@ -109,7 +109,7 @@ void MenuSelection::run()
 
 		if (pressed_button == m_select_button)
 		{
-			m_effects[selected_processor_index]->engage();
+			m_effect_setups[selected_processor_index]->engage();
 			initialise_mode_selection_menu();
 			set_selected_processor(selected_processor_index);
 		}
