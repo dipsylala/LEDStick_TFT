@@ -22,7 +22,7 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
+#include "LEDRGB.h"
 #include "StickHardware.h"
 
 extern uint8_t arial_bold[];
@@ -40,7 +40,7 @@ private:
 	
 public:
 	void create_interface_components(StickHardware hardware, uint32_t x, uint32_t y);
-	void check_point(uint32_t x, uint32_t y, RGB &rgb, boolean has_changed);
+	void check_point(uint32_t x, uint32_t y, LEDRGB &rgb, boolean has_changed);
 };
 
 

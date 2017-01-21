@@ -22,7 +22,7 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
+#include "LEDRGB.h"
 #include "LEDStick.h"
 #include "PaintingStateMachine.h"
 
@@ -33,7 +33,7 @@ private:
 	PaintingStateMachine *m_state_machine;
 
 public:
-	void start_painting(RGB &color);
+	void start_painting(LEDRGB &color);
 	SolidEffect(PaintingStateMachine *state_machine, LEDStick *pStrip);
 };
 

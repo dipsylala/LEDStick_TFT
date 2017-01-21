@@ -30,9 +30,9 @@ void EffectSetupBase::clear_space(int x1, int y1, int x2, int y2)
 	m_hardware.pTft->fillRect(x1, y1, x2, y2);
 }
 
-RGB EffectSetupBase::create_rgb(uint8_t red, uint8_t green, uint8_t blue)
+LEDRGB EffectSetupBase::create_rgb(uint8_t red, uint8_t green, uint8_t blue)
 {
-	RGB colour;
+	LEDRGB colour;
 	colour.red = red;
 	colour.green = green;
 	colour.blue = blue;

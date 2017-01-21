@@ -33,7 +33,7 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 	
 	uint16_t num_pixels = m_strip->get_stick_length();
 
-	RGB *rgb_line = new RGB[num_pixels];
+	LEDRGB *rgb_line = new LEDRGB[num_pixels];
 
 	uint32_t bitmap_line = 0;
 	uint32_t offset = 0;
@@ -57,7 +57,7 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 		}
 		case Painting:
 		{
-			memset(rgb_line, 0, num_pixels * sizeof (RGB));
+			memset(rgb_line, 0, num_pixels * sizeof (LEDRGB));
 			bitmap.read_image_line(bitmap_file, bitmap_line, rgb_line + offset, bitmap_width);
 
 			m_strip->set_rgb_strip_color(rgb_line, num_pixels);

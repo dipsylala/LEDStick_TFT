@@ -18,9 +18,9 @@
 
 // I prefer to calculate the current colour based on current step out of total steps. 
 // Reason being - with deltas you can start getting rounding errors and having to check boundaries etc.
-RGB FadeBase::calculate_current_colour(RGB sourceColour, RGB destinationColour, uint32_t current_step, uint32_t total_steps)
+LEDRGB FadeBase::calculate_current_colour(LEDRGB sourceColour, LEDRGB destinationColour, uint32_t current_step, uint32_t total_steps)
 {
-	RGB new_colour;
+	LEDRGB new_colour;
 	new_colour.red = sourceColour.red + ((GetDifference(destinationColour.red, sourceColour.red) * (int32_t)current_step) / (int32_t)total_steps);
 	new_colour.green = sourceColour.green + ((GetDifference(destinationColour.green, sourceColour.green) * (int32_t)current_step) / (int32_t)total_steps);
 	new_colour.blue = sourceColour.blue + ((GetDifference(destinationColour.blue, sourceColour.blue) * (int32_t)current_step) / (int32_t)total_steps);

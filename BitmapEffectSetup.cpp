@@ -206,7 +206,7 @@ void BitmapEffectSetup::display_current_bitmap(uint32_t x, uint32_t y, uint32_t 
 	float ratio_width = (float)m_current_bitmap.bitmap_info.imgWidth / (float)display_width;
 	float total_display_ratio = ratio_height > ratio_width ? ratio_height : ratio_width;
 
-	RGB *line = new RGB[m_current_bitmap.bitmap_info.imgWidth];
+	LEDRGB *line = new LEDRGB[m_current_bitmap.bitmap_info.imgWidth];
 
 	for (int display_line = 0; display_line < display_height; display_line++)
 	{

@@ -17,7 +17,6 @@
 // Ideas and concepts from LEDStick by Justin Barkby who created a
 // TFT-based version of Michael Ross' code (http://mrossphoto.com/)
 
-
 #if defined(__AVR__)
 #include <UTouch.h>
 #include <UTFT_Buttons.h>
@@ -26,8 +25,8 @@
 #include <EEPROM.h>
 #include <SPI.h>
 #include <memorysaver.h>
-#include <Adafruit_NeoPixel.h>
 #include <TFT.h>
+#include <FastLED.h>
 #include "FadeBase.h"
 #include "FadeConfiguration.h"
 #include "LEDStick.h"
@@ -43,14 +42,13 @@
 #include "PaintingStateMachine.h"
 #include "StarEffectSetup.h"
 #include "SolidEffectSetup.h"
-#include "RGB.h"
+#include "LEDRGB.h"
 #include "RGBController.h"
 #include "MenuSelection.h"
 #include "FadeEffectSetup.h"
 #include "BitmapEffectSetup.h"
-#include "BaseEffectSetup.h"
+#include "EffectSetupBase.h"
 #include "StickHardware.h"
-
 
 #define imagedatatype  unsigned int
 #elif defined(__PIC32MX__)

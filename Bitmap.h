@@ -26,7 +26,7 @@
 #include <SPI.h>
 
 #include "BitmapInfo.h"
-#include "RGB.h"
+#include "LEDRGB.h"
 
 #define BMP_BF_OFF_BITS 54
 #define BMP_BI_SIZE 40
@@ -55,7 +55,7 @@ class Bitmap
 
 	 String filename;
 	 int32_t read_bitmap_info(File bitmap_file);
-	 void read_image_line(File bitmap_file, uint32_t line_number, RGB*rgb_line, uint32_t rgb_length);
+	 void read_image_line(File bitmap_file, uint32_t line_number, LEDRGB*rgb_line, uint32_t rgb_length);
 };
 
 

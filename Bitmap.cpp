@@ -120,7 +120,7 @@ boolean Bitmap::validate_is_supported_bitmap(BitmapInfo *bitmap_info)
 	return true;
 }
 
-void Bitmap::read_image_line(File bitmap_file, uint32_t line_number, RGB*rgb_line, uint32_t rgb_length)
+void Bitmap::read_image_line(File bitmap_file, uint32_t line_number, LEDRGB*rgb_line, uint32_t rgb_length)
 {
 	uint32_t read_length = rgb_length < bitmap_info.imgWidth ? rgb_length : bitmap_info.imgWidth;
 

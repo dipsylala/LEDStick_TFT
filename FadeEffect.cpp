@@ -39,7 +39,7 @@ void FadeEffect::start_painting(FadeConfiguration &fade_configuration, uint32_t 
 		}
 		case Painting:
 		{
-			RGB current_colours = calculate_current_colour(fade_configuration.colour_spread[colour_index],
+			LEDRGB current_colours = calculate_current_colour(fade_configuration.colour_spread[colour_index],
 				fade_configuration.colour_spread[next_colour_index],
 				current_colour_step,
 				steps_between_colours);

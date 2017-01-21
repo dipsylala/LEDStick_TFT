@@ -22,7 +22,7 @@
 	#include "WProgram.h"
 #endif
 
-#include "BaseEffectSetup.h"
+#include "EffectSetupBase.h"
 #include "PaintingState.h"
 #include "FadeConfiguration.h"
 #include "FadeBase.h"

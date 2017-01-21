@@ -15,7 +15,7 @@
 
 #include "SolidEffect.h"
 
-void SolidEffect::start_painting(RGB &color)
+void SolidEffect::start_painting(LEDRGB &color)
 {
 	m_state_machine->reset();
 

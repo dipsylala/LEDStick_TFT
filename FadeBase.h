@@ -22,12 +22,12 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
+#include "LEDRGB.h"
 
 class FadeBase
 {
 protected:
-	RGB calculate_current_colour(RGB sourceColour, RGB destinationColour, uint32_t current_step, uint32_t total_steps);
+	LEDRGB calculate_current_colour(LEDRGB sourceColour, LEDRGB destinationColour, uint32_t current_step, uint32_t total_steps);
 	inline int32_t GetDifference(uint32_t first, uint32_t second);
 };
 

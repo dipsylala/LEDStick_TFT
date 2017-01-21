@@ -31,7 +31,7 @@ void RGBController::create_interface_components(StickHardware hardware, uint32_t
 	hardware.pTft->drawBitmap(x, y, COLOR_PICKER_WIDTH, COLOR_PICKER_HEIGHT, (unsigned int*)color_picker_bmp, RGB_SCALE);
 }
 
-void RGBController::check_point(uint32_t x, uint32_t y, RGB &rgb, boolean has_changed)
+void RGBController::check_point(uint32_t x, uint32_t y, LEDRGB &rgb, boolean has_changed)
 {
 	if (x < m_xmin || y < m_ymin || x > m_xmax || y > m_ymax)
 	{

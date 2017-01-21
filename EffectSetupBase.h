@@ -22,7 +22,7 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
+#include "LEDRGB.h"
 #include "PaintingStateMachine.h"
 #include "StickHardware.h"
 
@@ -38,7 +38,7 @@ protected:
 
 	void clear_space(int x1, int y1, int x2, int y2);
 	void initialise_screen_base(String title);
-	RGB create_rgb(uint8_t red, uint8_t green, uint8_t blue);
+	LEDRGB create_rgb(uint8_t red, uint8_t green, uint8_t blue);
 	int add_go_button();
 	int add_back_button();
 	void prepare_screen_for_effect();

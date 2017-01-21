@@ -23,7 +23,7 @@
 #endif
 
 #include "StickHardware.h"
-#include "BaseEffectSetup.h"
+#include "EffectSetupBase.h"
 #include "RGBController.h"
 #include "ConfigurationManager.h"
 

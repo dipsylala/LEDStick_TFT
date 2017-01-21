@@ -22,13 +22,13 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
+#include "LEDRGB.h"
 
 typedef struct
 {
 	String name;
 	int num_colours;
-	RGB *colour_spread;
+	LEDRGB *colour_spread;
 } FadeConfiguration;
 
 #endif

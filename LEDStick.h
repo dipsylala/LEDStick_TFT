@@ -22,21 +22,23 @@
 	#include "WProgram.h"
 #endif
 
-#include <Adafruit_NeoPixel.h>
-#include "RGB.h"
+#include <fastled.h>
+#include <colorutils.h>
+#include "LEDRGB.h"
 
 #define GPIO_PIN 8 
+#define MAX_LEDS 512
 
 class LEDStick
 {
 private:
-	Adafruit_NeoPixel *m_neoPixel;
+	CRGB m_leds[MAX_LEDS];
 	uint16_t m_num_pixels;
 
 public:
-	void set_total_strip_colour(RGB colour);
+	void set_total_strip_colour(LEDRGB colour);
 	void set_total_strip_colour(uint8_t red, uint8_t green, uint8_t blue);
-	void set_rgb_strip_color(RGB* colours, uint16_t num_rgb);
+	void set_rgb_strip_color(LEDRGB* colours, uint16_t num_rgb);
 
 	void commit();
 	void clear_strip();
@@ -44,7 +46,6 @@ public:
 	void set_stick_length(uint16_t length);
 	uint16_t get_stick_length();
 	LEDStick(uint16_t num_pixels);
-
 };
 
 #endif

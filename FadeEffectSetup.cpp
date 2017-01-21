@@ -71,7 +71,7 @@ int FadeEffectSetup::read_fades_from_source(FadeConfiguration **fade_configurati
 	*fade_configuration = new FadeConfiguration[num_configurations];
 	(*fade_configuration)[0].name = "Rainbow";
 	(*fade_configuration)[0].num_colours = 7;
-	(*fade_configuration)[0].colour_spread = new RGB[(*fade_configuration)[0].num_colours];
+	(*fade_configuration)[0].colour_spread = new LEDRGB[(*fade_configuration)[0].num_colours];
 	(*fade_configuration)[0].colour_spread[0] = create_rgb(148, 0, 211);
 	(*fade_configuration)[0].colour_spread[1] = create_rgb(75, 0, 130);
 	(*fade_configuration)[0].colour_spread[2] = create_rgb(0, 0, 255);
@@ -82,7 +82,7 @@ int FadeEffectSetup::read_fades_from_source(FadeConfiguration **fade_configurati
 
 	(*fade_configuration)[1].name = "Pastel";
 	(*fade_configuration)[1].num_colours = 5;
-	(*fade_configuration)[1].colour_spread = new RGB[(*fade_configuration)[1].num_colours];
+	(*fade_configuration)[1].colour_spread = new LEDRGB[(*fade_configuration)[1].num_colours];
 	(*fade_configuration)[1].colour_spread[0] = create_rgb(255, 179, 186);
 	(*fade_configuration)[1].colour_spread[1] = create_rgb(255, 223, 186);
 	(*fade_configuration)[1].colour_spread[2] = create_rgb(255, 255, 186);
@@ -91,20 +91,20 @@ int FadeEffectSetup::read_fades_from_source(FadeConfiguration **fade_configurati
 
 	(*fade_configuration)[2].name = "Red/Green";
 	(*fade_configuration)[2].num_colours = 2;
-	(*fade_configuration)[2].colour_spread = new RGB[(*fade_configuration)[2].num_colours];
+	(*fade_configuration)[2].colour_spread = new LEDRGB[(*fade_configuration)[2].num_colours];
 	(*fade_configuration)[2].colour_spread[0] = create_rgb(255, 0, 0);
 	(*fade_configuration)[2].colour_spread[1] = create_rgb(0, 255, 0);
 
 	(*fade_configuration)[3].name = "Red/White/Blue";
 	(*fade_configuration)[3].num_colours = 3;
-	(*fade_configuration)[3].colour_spread = new RGB[(*fade_configuration)[3].num_colours];
+	(*fade_configuration)[3].colour_spread = new LEDRGB[(*fade_configuration)[3].num_colours];
 	(*fade_configuration)[3].colour_spread[0] = create_rgb(255, 0, 0);
 	(*fade_configuration)[3].colour_spread[1] = create_rgb(255, 255, 255);
 	(*fade_configuration)[3].colour_spread[2] = create_rgb(0, 0, 255);
 
 	(*fade_configuration)[4].name = "Pulsing White";
 	(*fade_configuration)[4].num_colours = 2;
-	(*fade_configuration)[4].colour_spread = new RGB[(*fade_configuration)[4].num_colours];
+	(*fade_configuration)[4].colour_spread = new LEDRGB[(*fade_configuration)[4].num_colours];
 	(*fade_configuration)[4].colour_spread[0] = create_rgb(0, 0, 0);
 	(*fade_configuration)[4].colour_spread[1] = create_rgb(255, 255, 255);
 
@@ -135,7 +135,7 @@ void FadeEffectSetup::setup_loop()
 	
 	while (back_pressed == false)
 	{
-		RGB current_colours = calculate_current_colour(fade_configuration[current_configuration].colour_spread[colour_index],
+		LEDRGB current_colours = calculate_current_colour(fade_configuration[current_configuration].colour_spread[colour_index],
 													fade_configuration[current_configuration].colour_spread[next_colour_index], 
 													current_colour_step, 
 													steps_between_colours);

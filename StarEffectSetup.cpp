@@ -41,7 +41,7 @@ void StarEffectSetup::setup_loop()
 	int gap_time = 200;
 	int star_time = 200;
 
-	RGB starlight_color = create_rgb(255, 255, 255);
+	LEDRGB starlight_color = create_rgb(255, 255, 255);
 
 	initialise_main_interface(selection_buttons);
 

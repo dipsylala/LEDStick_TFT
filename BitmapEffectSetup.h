@@ -24,7 +24,7 @@
 
 #include <SD.h>
 #include <SPI.h>
-#include "BaseEffectSetup.h"
+#include "EffectSetupBase.h"
 #include "PaintingState.h"
 #include "Bitmap.h"
 #include "BitmapEffect.h"

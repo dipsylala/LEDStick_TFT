@@ -33,7 +33,7 @@ void SolidEffectSetup::setup_loop()
 	initialise_main_interface(main_buttons);
 
 	boolean back_pressed = false;
-	RGB current_color = create_rgb(128, 128, 128);
+	LEDRGB current_color = create_rgb(128, 128, 128);
 	boolean has_changed = true;
 	boolean led_on = true;
 
