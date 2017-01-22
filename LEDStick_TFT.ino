@@ -48,7 +48,7 @@
 #include "MenuSelection.h"
 #include "FadeEffectSetup.h"
 #include "BitmapEffectSetup.h"
-#include "BaseEffectSetup.h"
+#include "EffectSetupBase.h"
 #include "StickHardware.h"
 
 
