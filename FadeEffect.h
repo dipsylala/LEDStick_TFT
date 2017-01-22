@@ -37,6 +37,7 @@ private:
 public:
 	void start_painting(FadeConfiguration &fade_configuration, uint32_t pulse_delay, uint32_t steps_between_colours);
 	FadeEffect(PaintingStateMachine * state_machine, LEDStick * pStrip);
+	void loop();
 };
 
 #endif

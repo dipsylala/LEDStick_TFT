@@ -49,6 +49,7 @@ public:
 	EffectSetupBase(StickHardware hardware, PaintingStateMachine *state_machine);
 	virtual String name() = 0;
 	virtual void engage() = 0;
+	virtual void loop() = 0;
 };
 
 

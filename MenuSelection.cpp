@@ -39,12 +39,14 @@ void MenuSelection::initialise_mode_selection_menu()
 	m_hardware.pStrip->clear_strip();
 }
 
-void MenuSelection::set_selected_processor(int selected_mode)
+void MenuSelection::set_selected_processor(uint32_t selected_mode)
 {
 	char nameBuf[50];
 	m_effect_setups[selected_mode]->name().toCharArray(nameBuf, 50);
 	m_hardware.pButtons->relabelButton(m_select_button, nameBuf, true);
 	m_hardware.pButtons->drawButton(m_select_button);
+
+	m_current_mode_index = selected_mode;
 }
 
 
@@ -57,63 +59,67 @@ void MenuSelection::run()
 	initialise_mode_selection_menu();
 
 	set_selected_processor(0);
-
-	bool back_pressed = false;
-
-	while (back_pressed == false)
-	{
-		if (m_hardware.pTouch->dataAvailable() == false)
-		{
-			continue;
-		}
-
-		int pressed_button = m_hardware.pButtons->checkButtons();
-
-		if (pressed_button == m_previous_button || pressed_button == m_next_button )
-		{
-			if (pressed_button == m_previous_button)
-			{
-				if (selected_processor_index > 0)
-				{
-					selected_processor_index--;
-				}
-				else
-				{
-					selected_processor_index = m_total_effects - 1;
-				}
-			}
-
-			if (pressed_button == m_next_button)
-			{
-				if (selected_processor_index < m_total_effects - 1)
-				{
-					selected_processor_index++;
-				}
-				else
-				{
-					selected_processor_index = 0;
-				}
-			}
-
-			set_selected_processor(selected_processor_index);
-		}
-
-		if (pressed_button == m_setup_button)
-		{
-			ConfigurationData config_data = m_configuration_manager->engage();
-			initialise_mode_selection_menu();
-			m_hardware.pStrip->set_stick_length(config_data.num_pixels);
-
-			set_selected_processor(selected_processor_index);
-		}
-
-		if (pressed_button == m_select_button)
-		{
-			m_effect_setups[selected_processor_index]->engage();
-			initialise_mode_selection_menu();
-			set_selected_processor(selected_processor_index);
-		}
-
-		while (m_hardware.pTouch->dataAvailable() == true) {};
-	}
 }
+
+void MenuSelection::loop()
+{
+	Serial.println("In MenuSelection loop");
+
+	if (m_hardware.pTouch->dataAvailable() == false)
+	{
+		return;
+	}
+
+	Serial.println("In the loop");
+
+	int pressed_button = m_hardware.pButtons->checkButtons();
+
+	if (pressed_button == m_previous_button || pressed_button == m_next_button )
+	{
+		if (pressed_button == m_previous_button)
+		{
+			if (m_current_mode_index > 0)
+			{
+				m_current_mode_index--;
+			}
+			else
+			{
+				m_current_mode_index = m_total_effects - 1;
+			}
+		}
+
+		if (pressed_button == m_next_button)
+		{
+			if (m_current_mode_index < m_total_effects - 1)
+			{
+				m_current_mode_index++;
+			}
+			else
+			{
+				m_current_mode_index = 0;
+			}
+		}
+
+		set_selected_processor(m_current_mode_index);
+	}
+
+	if (pressed_button == m_setup_button)
+	{
+		ConfigurationData config_data = m_configuration_manager->engage();
+		initialise_mode_selection_menu();
+		m_hardware.pStrip->set_stick_length(config_data.num_pixels);
+
+		set_selected_processor(m_current_mode_index);
+	}
+
+	if (pressed_button == m_select_button)
+	{
+		m_effect_setups[m_current_mode_index]->engage();
+		initialise_mode_selection_menu();
+		set_selected_processor(m_current_mode_index);
+	}
+
+	while (m_hardware.pTouch->dataAvailable() == true) {};
+}
+
+

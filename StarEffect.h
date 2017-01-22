@@ -35,6 +35,7 @@ private:
 public:
 	void start_painting(int gap_time, int star_time_slower);
 	StarEffect(PaintingStateMachine * state_machine, LEDStick *pStrip);
+	void loop();
 };
 
 #endif

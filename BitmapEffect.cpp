@@ -110,3 +110,8 @@ BitmapEffect::BitmapEffect(PaintingStateMachine * state_machine, LEDStick * pStr
 	m_state_machine = state_machine;
 	m_strip = pStrip;
 }
+
+void BitmapEffect::loop()
+{
+
+}

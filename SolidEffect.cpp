@@ -15,41 +15,47 @@
 
 #include "SolidEffect.h"
 
-void SolidEffect::start_painting(LEDRGB &color)
+void SolidEffect::setup(LEDRGB &color)
 {
+	m_current_color = color;
+}
+
+void SolidEffect::preview()
+{
+	m_state_machine->set_state(Previewing);
+}
+
+void SolidEffect::start_painting()
+{
+	m_painting = true;
 	m_state_machine->reset();
+	m_strip->set_total_strip_colour(m_current_color);
+}
 
-	boolean exit_pressed = false;
-
-	m_strip->clear_strip();
-
-	while (exit_pressed == false)
+void SolidEffect::loop()
+{
+	if (m_painting == false)
 	{
-		PaintingState painting_state = m_state_machine->get_state();
-
-		switch (painting_state)
-		{
-		case StoppedPainting:
-		{
-			m_strip->clear_strip();
-			break;
-		}
-		case Painting:
-		{
-			m_strip->set_total_strip_colour(color);
-			break;
-		}
-		case Exit:
-		{
-			exit_pressed = true;
-			break;
-		}
-		default:
-			break;
-		}
+		return;
 	}
 
-	m_strip->clear_strip();
+	PaintingState painting_state = m_state_machine->get_state();
+
+	switch (painting_state)
+	{
+	case StoppedPainting:
+	{
+		m_strip->clear_strip();
+		break;
+	}
+	case Exit:
+	{
+		m_painting = false;
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 SolidEffect::SolidEffect(PaintingStateMachine *state_machine, LEDStick *pStrip)

@@ -65,6 +65,10 @@ UTFT tft(ITDB32S, 38, 39, 40, 41);
 UTouch  touch(6, 5, 4, 3, 2);
 UTFT_Buttons buttons(&tft, &touch);
 LEDStick *stick;
+MenuSelection *menu_selection;
+
+uint32_t m_num_effects = 0;
+EffectSetupBase **m_effects;
 
 void setup()
 {
@@ -92,29 +96,34 @@ void setup()
 
 	PaintingStateMachine state_machine(hardware);
 
-	int num_effects = 4;
-	EffectSetupBase **effects = new EffectSetupBase*[num_effects];
-	effects[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
-	effects[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
-	effects[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
-	effects[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
+	m_num_effects = 4;
+	m_effects = new EffectSetupBase*[m_num_effects];
+	m_effects[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
+	m_effects[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
+	m_effects[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
+	m_effects[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
 
 	ConfigurationManager *configuration_manager = new ConfigurationManager(hardware);
 
-	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, configuration_manager);
+	menu_selection = new MenuSelection(hardware, m_effects, m_num_effects, configuration_manager);
 	menu_selection->run();
 
-	for (uint32_t i = 0; i < num_effects; i++)
-	{
-		delete effects[i];
-	}
+	//for (uint32_t i = 0; i < num_effects; i++)
+	//{
+	//	delete effects[i];
+	//}
 
-	delete effects;
+	//delete effects;
 }
 
 void loop()
 {
+	menu_selection->loop();
 
+	for (uint32_t i = 0; i < m_num_effects; i++)
+	{
+		m_effects[i]->loop();
+	}
 }
 
 void intro_message(StickHardware hardware)

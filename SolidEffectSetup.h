@@ -36,16 +36,20 @@ private:
 		int go_button;
 	} SolidSelectionButtons;
 
-	void initialise_main_interface(SolidSelectionButtons &buttons);
-	void setup_loop ();
+	void initialise_main_interface();
 
+	SolidSelectionButtons m_main_buttons;
 	RGBController rgbController;
 	SolidEffect *m_effect;
+
+	bool setup_engaged = false;
+	LEDRGB m_color_beam = create_rgb(128, 128, 128);
 
 public:
 	String name();
 	void engage();
 	SolidEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, SolidEffect *effect);
+	void loop();
 };
 
 #endif

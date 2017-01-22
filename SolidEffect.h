@@ -31,10 +31,14 @@ class SolidEffect
 private:
 	LEDStick *m_strip;
 	PaintingStateMachine *m_state_machine;
-
+	LEDRGB m_current_color;
+	bool m_painting = false;
 public:
-	void start_painting(LEDRGB &color);
+	void start_painting();
 	SolidEffect(PaintingStateMachine *state_machine, LEDStick *pStrip);
+	void loop();
+	void setup(LEDRGB &color);
+	void preview();
 };
 
 #endif

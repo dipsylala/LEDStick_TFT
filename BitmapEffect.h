@@ -37,6 +37,7 @@ private:
 public:
 	void start_painting(Bitmap &bitmap, uint32_t frame_delay, bool repeat, bool random_offset);
 	BitmapEffect(PaintingStateMachine * state_machine, LEDStick * pStrip);
+	void loop();
 };
 
 

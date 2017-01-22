@@ -17,10 +17,12 @@
 #define _PAINTINGSTATE_h
 
 enum PaintingState {
-	Waiting = 1,
-	Painting = 2,
-	StoppedPainting = 3,
-	Exit = 4
+	Dormant = 1,
+	Previewing = 2,
+	WaitingToStart = 3,
+	Painting = 4,
+	StoppedPainting = 5,
+	Exit = 6
 };
 
 

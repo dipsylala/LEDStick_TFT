@@ -79,3 +79,8 @@ FadeEffect::FadeEffect(PaintingStateMachine * state_machine, LEDStick * pStrip)
 	m_state_machine = state_machine;
 	m_strip = pStrip;
 }
+
+void FadeEffect::loop()
+{
+
+}

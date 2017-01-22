@@ -15,89 +15,68 @@
 
 #include "StarEffectSetup.h"
 
-void StarEffectSetup::initialise_main_interface(StarSelectionButtons &buttons)
+void StarEffectSetup::initialise_main_interface()
 {
 	m_hardware.pButtons->deleteAllButtons();
 
 	m_hardware.pButtons->setTextFont(arial_bold);
 	m_hardware.pTft->print(String("Gap Time"), 20, 30);
-	buttons.gap_time_slower = m_hardware.pButtons->addButton(220, 20, 40, 40, "a", BUTTON_SYMBOL);
-	buttons.gap_time_faster = m_hardware.pButtons->addButton(270, 20, 40, 40, "b", BUTTON_SYMBOL);
+	m_star_selection_buttons.gap_time_slower = m_hardware.pButtons->addButton(220, 20, 40, 40, "a", BUTTON_SYMBOL);
+	m_star_selection_buttons.gap_time_faster = m_hardware.pButtons->addButton(270, 20, 40, 40, "b", BUTTON_SYMBOL);
 		
 	m_hardware.pTft->print(String("Star Time"), 20, 80);
-	buttons.star_time_slower = m_hardware.pButtons->addButton(220, 70, 40, 40, "a", BUTTON_SYMBOL);
-	buttons.star_time_faster = m_hardware.pButtons->addButton(270, 70, 40, 40, "b", BUTTON_SYMBOL);
+	m_star_selection_buttons.star_time_slower = m_hardware.pButtons->addButton(220, 70, 40, 40, "a", BUTTON_SYMBOL);
+	m_star_selection_buttons.star_time_faster = m_hardware.pButtons->addButton(270, 70, 40, 40, "b", BUTTON_SYMBOL);
 
-	buttons.back_button = add_back_button();
-	buttons.go_button = add_go_button();
+	m_star_selection_buttons.back_button = add_back_button();
+	m_star_selection_buttons.go_button = add_go_button();
 
 	m_hardware.pButtons->drawButtons();
 }
 
-// Configuring the effect - may or may not include a 'preview' on the stick itself
-void StarEffectSetup::setup_loop()
+void StarEffectSetup::loop()
 {
-	StarSelectionButtons selection_buttons;
-	int gap_time = 200;
-	int star_time = 200;
-
-	LEDRGB starlight_color = create_rgb(255, 255, 255);
-
-	initialise_main_interface(selection_buttons);
-
-	int num_pixels = m_hardware.pStrip->get_stick_length();
-	boolean back_pressed = false;
-	
-	while (back_pressed == false)
+	if (m_setup_engaged == false)
 	{
-		int random_pixel = random(num_pixels);
-
-		m_hardware.pStrip->clear_strip();
-
-		m_hardware.pStrip->set_pixel_color(random_pixel, 255, 255, 255);
-		m_hardware.pStrip->commit();
-		delay(star_time);
-
-		int pressed_button = m_hardware.pButtons->checkButtons();
-		
-		if (pressed_button == selection_buttons.gap_time_slower && gap_time <= 480)
-		{
-			gap_time += 20;
-		}
-
-		if (pressed_button == selection_buttons.gap_time_slower && gap_time >= 20)
-		{
-			gap_time -= 20;
-		}
-
-		if (pressed_button == selection_buttons.star_time_faster && star_time <= 480)
-		{
-			star_time += 20;
-		}
-
-		if (pressed_button == selection_buttons.star_time_slower && star_time >= 20)
-		{
-			star_time -= 20;
-		}
-
-		if (pressed_button == selection_buttons.back_button)
-		{ 
-			back_pressed = true;
-		}
-
-		if (pressed_button == selection_buttons.go_button)
-		{
-			prepare_screen_for_effect();
-			m_effect->start_painting(gap_time, star_time);
-			initialise_main_interface(selection_buttons);
-		}
-
-		m_hardware.pStrip->clear_strip();
-		delay(gap_time);
+		return;
 	}
+
+	m_effect->loop();
+
+	int pressed_button = m_hardware.pButtons->checkButtons();
+		
+	if (pressed_button == m_star_selection_buttons.gap_time_slower && gap_time <= 480)
+	{
+		gap_time += 20;
+	}
+
+	if (pressed_button == m_star_selection_buttons.gap_time_slower && gap_time >= 20)
+	{
+		gap_time -= 20;
+	}
+
+	if (pressed_button == m_star_selection_buttons.star_time_faster && star_time <= 480)
+	{
+		star_time += 20;
+	}
+
+	if (pressed_button == m_star_selection_buttons.star_time_slower && star_time >= 20)
+	{
+		star_time -= 20;
+	}
+
+	if (pressed_button == m_star_selection_buttons.back_button)
+	{ 
+		m_setup_engaged = false;
+	}
+
+	//if (pressed_button == m_star_selection_buttons.go_button)
+	//{
+	//	prepare_screen_for_effect();
+	//	m_effect->start_painting(gap_time, star_time);
+	//	initialise_main_interface();
+	//}
 }
-
-
 
 StarEffectSetup::StarEffectSetup(StickHardware hardware, 
 							PaintingStateMachine *state_machine,
@@ -114,5 +93,5 @@ String StarEffectSetup::name()
 void StarEffectSetup::engage()
 {
 	initialise_screen_base(String("Star mode"));
-	setup_loop();
+	initialise_main_interface();
 }

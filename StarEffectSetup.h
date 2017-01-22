@@ -43,13 +43,18 @@ private:
 	StarSelectionButtons m_star_selection_buttons;
 	StarEffect *m_effect;
 
-	void initialise_main_interface(StarSelectionButtons &buttons);
-	void setup_loop();
+	uint32_t m_gap_time = 200;
+	uint32_t m_star_time = 200;
+	uint32_t m_num_pixels = 0;
+	bool m_setup_engaged = false;
+
+	void initialise_main_interface();
 
 public:
 	String name();
 	void engage();
 	StarEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, StarEffect *effect);
+	void loop();
 };
 
 #endif

@@ -42,13 +42,15 @@ private:
 	uint32_t m_setup_button;
 
 	uint32_t m_total_effects = 0;
+	uint32_t m_current_mode_index = 0;
 
 	void initialise_mode_selection_menu();
-	void set_selected_processor(int selected_mode);
+	void set_selected_processor(uint32_t selected_mode);
 
 public:
 	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, ConfigurationManager *configuration_manager);
 	void run();
+	void loop();
 };
 
 #endif
