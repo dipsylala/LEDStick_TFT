@@ -44,6 +44,8 @@ private:
 	uint32_t m_total_effects = 0;
 	uint32_t m_current_mode_index = 0;
 
+	bool m_selection_engaged = false;
+
 	void initialise_mode_selection_menu();
 	void set_selected_processor(uint32_t selected_mode);
 

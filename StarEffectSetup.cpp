@@ -45,24 +45,24 @@ void StarEffectSetup::loop()
 
 	int pressed_button = m_hardware.pButtons->checkButtons();
 		
-	if (pressed_button == m_star_selection_buttons.gap_time_slower && gap_time <= 480)
+	if (pressed_button == m_star_selection_buttons.gap_time_slower && m_gap_time <= 480)
 	{
-		gap_time += 20;
+		m_gap_time += 20;
 	}
 
-	if (pressed_button == m_star_selection_buttons.gap_time_slower && gap_time >= 20)
+	if (pressed_button == m_star_selection_buttons.gap_time_slower && m_gap_time >= 20)
 	{
-		gap_time -= 20;
+		m_gap_time -= 20;
 	}
 
-	if (pressed_button == m_star_selection_buttons.star_time_faster && star_time <= 480)
+	if (pressed_button == m_star_selection_buttons.star_time_faster && m_star_time <= 480)
 	{
-		star_time += 20;
+		m_star_time += 20;
 	}
 
-	if (pressed_button == m_star_selection_buttons.star_time_slower && star_time >= 20)
+	if (pressed_button == m_star_selection_buttons.star_time_slower && m_star_time >= 20)
 	{
-		star_time -= 20;
+		m_star_time -= 20;
 	}
 
 	if (pressed_button == m_star_selection_buttons.back_button)

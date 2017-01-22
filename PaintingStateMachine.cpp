@@ -18,7 +18,7 @@
 
 void PaintingStateMachine::reset() 
 {
-	current_state = Waiting;
+	current_state = Dormant;
 }
 
 PaintingState PaintingStateMachine::get_state()

@@ -419,3 +419,8 @@ void BitmapEffectSetup::engage()
 
 	clear_stored_files(true);
 }
+
+void BitmapEffectSetup::loop()
+{
+
+}

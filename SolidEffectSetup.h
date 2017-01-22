@@ -42,7 +42,7 @@ private:
 	RGBController rgbController;
 	SolidEffect *m_effect;
 
-	bool setup_engaged = false;
+	bool m_setup_engaged = false;
 	LEDRGB m_color_beam = create_rgb(128, 128, 128);
 
 public:

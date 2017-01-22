@@ -28,7 +28,7 @@ void SolidEffectSetup::initialise_main_interface()
 
 void SolidEffectSetup::loop()
 {
-	if (setup_engaged == false)
+	if (m_setup_engaged == false)
 	{
 		return;
 	}
@@ -49,7 +49,7 @@ void SolidEffectSetup::loop()
 
 	if (pressed_button == m_main_buttons.back_button)
 	{
-		setup_engaged = false;
+		m_setup_engaged = false;
 	}
 
 	if (pressed_button == m_main_buttons.go_button)
@@ -78,4 +78,5 @@ void SolidEffectSetup::engage()
 	initialise_main_interface();
 	m_effect->setup(m_color_beam);
 	m_effect->preview();
+	m_setup_engaged = true;
 }

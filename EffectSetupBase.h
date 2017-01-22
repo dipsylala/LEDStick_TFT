@@ -43,8 +43,6 @@ protected:
 	int add_back_button();
 	void prepare_screen_for_effect();
 
-	virtual void setup_loop() = 0;
-
 public:
 	EffectSetupBase(StickHardware hardware, PaintingStateMachine *state_machine);
 	virtual String name() = 0;

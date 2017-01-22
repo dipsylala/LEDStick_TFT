@@ -57,6 +57,7 @@ public:
 	String name();
 	void engage();
 	FadeEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, FadeEffect *effect);
+	void loop();
 };
 
 

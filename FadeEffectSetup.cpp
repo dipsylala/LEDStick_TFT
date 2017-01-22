@@ -260,3 +260,8 @@ void FadeEffectSetup::engage()
 	initialise_screen_base(String("Fade mode"));
 	setup_loop();
 }
+
+void FadeEffectSetup::loop()
+{
+
+}

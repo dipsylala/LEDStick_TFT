@@ -54,6 +54,8 @@ void MenuSelection::run()
 {
 	int selected_processor_index = 0;
 
+	m_selection_engaged = true;
+
 	m_hardware.pTft->clrScr();
 
 	initialise_mode_selection_menu();
@@ -63,14 +65,15 @@ void MenuSelection::run()
 
 void MenuSelection::loop()
 {
-	Serial.println("In MenuSelection loop");
+	if (m_selection_engaged == false)
+	{
+		return;
+	}
 
 	if (m_hardware.pTouch->dataAvailable() == false)
 	{
 		return;
 	}
-
-	Serial.println("In the loop");
 
 	int pressed_button = m_hardware.pButtons->checkButtons();
 
@@ -106,6 +109,7 @@ void MenuSelection::loop()
 	if (pressed_button == m_setup_button)
 	{
 		ConfigurationData config_data = m_configuration_manager->engage();
+
 		initialise_mode_selection_menu();
 		m_hardware.pStrip->set_stick_length(config_data.num_pixels);
 
@@ -115,11 +119,8 @@ void MenuSelection::loop()
 	if (pressed_button == m_select_button)
 	{
 		m_effect_setups[m_current_mode_index]->engage();
-		initialise_mode_selection_menu();
-		set_selected_processor(m_current_mode_index);
+		m_selection_engaged = false;
 	}
 
 	while (m_hardware.pTouch->dataAvailable() == true) {};
 }
-
-

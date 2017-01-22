@@ -81,6 +81,7 @@ public:
 	String name();
 	void engage();
 	BitmapEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, BitmapEffect *effect);
+	void loop();
 };
 
 
