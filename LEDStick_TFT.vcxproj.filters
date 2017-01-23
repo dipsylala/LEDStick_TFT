@@ -13,11 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{46775f04-4f8e-4a21-af0c-f0b253e16246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd Party Libraries">
+      <UniqueIdentifier>{b1fca93a-689e-4826-ac6b-976de8cc6d31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="LEDStick_TFT.ino" />
     <None Include="LICENSE" />
     <None Include="README.md" />
+    <None Include="Documentation\LEDStick-simple-build.pdf">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="3rd Party Libraries\UTFT.zip" />
+    <None Include="3rd Party Libraries\UTFT_Buttons.zip" />
+    <None Include="3rd Party Libraries\UTouch.zip" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StickHardware.h">
