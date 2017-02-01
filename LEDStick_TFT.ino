@@ -19,6 +19,7 @@
 
 
 #if defined(__AVR__)
+#include <UTouchCD.h>
 #include <UTouch.h>
 #include <UTFT_Buttons.h>
 #include <UTFT.h>
@@ -63,30 +64,42 @@ extern uint8_t SmallFont[];
 extern uint8_t arial_bold[];
 extern uint8_t Various_Symbols_32x32[];
 
-UTFT tft(ITDB32S, 38, 39, 40, 41);
-UTouch  touch(6, 5, 4, 3, 2);
-UTFT_Buttons buttons(&tft, &touch);
+UTFT *tft;
+UTouch  *touch;
+UTFT_Buttons *buttons;
 LEDStick *stick;
 
 void setup()
 {
-	StickHardware hardware;
 	Serial.begin(115200);
+
+	Serial.println("Creating TFT");
+	tft = new UTFT(ITDB32S, 38, 39, 40, 41);
+	Serial.println("Creating Touch");
+	touch = new UTouch(6, 5, 4, 3, 2);
+	Serial.println("Creating Buttons");
+	buttons = new UTFT_Buttons(tft, touch);
+
+	Serial.println("Retrieving Configuration");
 
 	EepromConfiguration configuration;
 	ConfigurationData config_data = configuration.read_configuration();
 
+	Serial.println("Initialising LEDStick");
+
+	StickHardware hardware;
 	hardware.pStrip = new LEDStick(config_data.num_pixels);
-	hardware.pTft = &tft;
+	hardware.pTft = tft;
 	hardware.pTft->InitLCD();
 	hardware.pTft->clrScr();
 	hardware.pTft->setFont(arial_bold);
 
-	hardware.pTouch = &touch;
+	Serial.println("Initialising Touch");
+	hardware.pTouch = touch;
 	hardware.pTouch->InitTouch(LANDSCAPE);
 	hardware.pTouch->setPrecision(PREC_HI);
 
-	hardware.pButtons = &buttons;
+	hardware.pButtons = buttons;
 	hardware.pButtons->setSymbolFont(Various_Symbols_32x32);
 
 	intro_message(hardware);
