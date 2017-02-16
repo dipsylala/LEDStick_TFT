@@ -29,13 +29,15 @@ void BitmapEffectSetup::initialise_main_interface(BitmapSelectionButtons &button
 	buttons.faster_frame = m_hardware.pButtons->addButton(270, 20, 40, 40, "+");
 
 	m_hardware.pTft->setColor(255, 255, 255);
-	m_hardware.pTft->print("Repeat", 10, 90);
-	buttons.repeat_paint_toggle = m_hardware.pButtons->addButton(110, 80, 40, 40, "", BUTTON_SYMBOL);
-	m_hardware.pTft->print("Offset", 10, 130);
-	buttons.random_offset_toggle = m_hardware.pButtons->addButton(110, 120, 40, 40, "", BUTTON_SYMBOL);
+	m_hardware.pTft->print("Repeat", 170, 90);
+	buttons.repeat_paint_toggle = m_hardware.pButtons->addButton(270, 80, 40, 40, "", BUTTON_SYMBOL);
+	m_hardware.pTft->print("Offset", 170, 130);
+	buttons.random_offset_toggle = m_hardware.pButtons->addButton(270, 120, 40, 40, "", BUTTON_SYMBOL);
 
 	buttons.previous_bitmap = m_hardware.pButtons->addButton(225, 180, 40, 40, "a", BUTTON_SYMBOL);
 	buttons.next_bitmap = m_hardware.pButtons->addButton(270, 180, 40, 40, "b", BUTTON_SYMBOL);
+
+	buttons.preview_button = m_hardware.pButtons->addButton(20, 100, 40, 40, "|", BUTTON_SYMBOL);
 
 	buttons.back_button = add_back_button();
 	buttons.go_button = add_go_button();
@@ -184,13 +186,13 @@ void BitmapEffectSetup::display_frame_delay(uint32_t frame_delay)
 	m_hardware.pTft->print(String(percentage) + "% ", 170, 30);
 }
 
-void BitmapEffectSetup::calculate_time_to_display(uint32_t frame_delay, Bitmap bitmap)
+void BitmapEffectSetup::display_time_to_show_bitmap(uint32_t frame_delay, Bitmap bitmap)
 {
 	uint32_t max_distance = bitmap.bitmap_info.imgHeight > bitmap.bitmap_info.imgWidth ? bitmap.bitmap_info.imgHeight : bitmap.bitmap_info.imgWidth;
 
 	float total_time = ((bitmap.bitmap_info.imgHeight * frameDelay) * 6) / (float)1000;
 
-	m_hardware.pTft->print(String(total_time) + " Secs  ", 170, 70);
+	m_hardware.pTft->print(String(total_time) + " Secs  ", 10, 70);
 }
 
 void BitmapEffectSetup::display_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height)
@@ -282,11 +284,9 @@ void BitmapEffectSetup::setup_loop()
 	
 	display_frame_delay(frame_delay);
 	retrieve_bitmap_details(*(m_bitmap_filenames[m_current_file_index]));
-	calculate_time_to_display(frameDelay, m_current_bitmap);
+	display_time_to_show_bitmap(frameDelay, m_current_bitmap);
 	display_repeat(bitmap_selection_buttons, repeat_bitmap);
 	display_random_offset(bitmap_selection_buttons, random_offset);
-	display_current_bitmap(110, 30, 40, 40);
-
 
 	while (exit_pressed == false)
 	{
@@ -324,8 +324,13 @@ void BitmapEffectSetup::setup_loop()
 			}
 
 			retrieve_bitmap_details(*(m_bitmap_filenames[m_current_file_index]));
-			calculate_time_to_display(frameDelay, m_current_bitmap);
-			display_current_bitmap(110, 30, 40, 40);
+			display_time_to_show_bitmap(frameDelay, m_current_bitmap);
+			clear_space(80, 90, 160, 170);
+		}
+
+		if (pressed_button == bitmap_selection_buttons.preview_button)
+		{
+			display_current_bitmap(80, 90, 80, 80);
 		}
 
 		if (pressed_button == bitmap_selection_buttons.slower_frame || pressed_button == bitmap_selection_buttons.faster_frame)
@@ -341,7 +346,7 @@ void BitmapEffectSetup::setup_loop()
 			}
 
 			display_frame_delay(frame_delay);
-			calculate_time_to_display(frame_delay, m_current_bitmap);
+			display_time_to_show_bitmap(frame_delay, m_current_bitmap);
 		}
 		
 		if (pressed_button == bitmap_selection_buttons.repeat_paint_toggle)
@@ -364,12 +369,12 @@ void BitmapEffectSetup::setup_loop()
 			initialise_screen_base(String("Bitmap mode"));
 			initialise_main_interface(bitmap_selection_buttons);
 			retrieve_bitmap_details(*(m_bitmap_filenames[m_current_file_index]));
-			calculate_time_to_display(frameDelay, m_current_bitmap);
+			display_time_to_show_bitmap(frameDelay, m_current_bitmap);
 			display_frame_delay(frame_delay);
-			calculate_time_to_display(frame_delay, m_current_bitmap);
+			display_time_to_show_bitmap(frame_delay, m_current_bitmap);
 			display_repeat(bitmap_selection_buttons, repeat_bitmap);
 			display_random_offset(bitmap_selection_buttons, random_offset);
-			display_current_bitmap(110, 30, 40, 40);
+			clear_space(80, 90, 160, 170);
 		}
 
 		if (pressed_button == bitmap_selection_buttons.back_button)

@@ -52,6 +52,7 @@ private:
 		uint16_t paint_button;
 		uint16_t repeat_paint_toggle;
 		uint16_t random_offset_toggle;
+		uint16_t preview_button;
 		uint16_t back_button;
 		uint16_t go_button;
 	} BitmapSelectionButtons;
@@ -66,10 +67,11 @@ private:
 	int get_sdcard_filenames(File directory, int file_count);
 	void clear_stored_files(bool free_allocated_bitmaps);
 
-	void calculate_time_to_display(uint32_t frame_delay, Bitmap bitmap);
+	void display_time_to_show_bitmap(uint32_t frame_delay, Bitmap bitmap);
 	void display_frame_delay(uint32_t frame_delay);
 	void display_repeat(BitmapSelectionButtons &buttons, boolean repeat);
 	void display_random_offset(BitmapSelectionButtons &buttons, boolean random_offset);
+	void clear_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height);
 	void display_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height);
 	void retrieve_bitmap_details(String bitmap_filename);
 	void initialise_sd_read_menu(SdCardCancelButtons &buttons);
