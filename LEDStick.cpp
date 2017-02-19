@@ -66,6 +66,7 @@ void LEDStick::set_pixel_color(uint16_t pixel_index, uint8_t red, uint8_t green,
 void LEDStick::set_stick_length(uint16_t length)
 {
 	m_neoPixel->updateLength(length);
+	m_num_pixels = length;
 }
 
 uint16_t LEDStick::get_stick_length()
