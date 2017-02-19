@@ -65,6 +65,7 @@ void ChaseEffect::start_painting(RGB &color, uint32_t pulse_delay, uint32_t numb
 			}
 
 			m_strip->commit();
+			delay(pulse_delay);
 			break;
 		}
 		case Exit:
