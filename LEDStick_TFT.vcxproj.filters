@@ -35,9 +35,6 @@
     <ClInclude Include="StickHardware.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="__vm\.LEDStick_TFT.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuSelection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,6 +101,15 @@
     <ClInclude Include="EffectSetupBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="__vm\.LEDStick_TFT.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseEffectSetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuSelection.cpp">
@@ -161,6 +167,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EffectSetupBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseEffectSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

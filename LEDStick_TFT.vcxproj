@@ -89,6 +89,8 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChaseEffect.h" />
+    <ClInclude Include="ChaseEffectSetup.h" />
     <ClInclude Include="EffectSetupBase.h" />
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BitmapEffect.h" />
@@ -116,6 +118,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arial_bold.c" />
+    <ClCompile Include="ChaseEffect.cpp" />
+    <ClCompile Include="ChaseEffectSetup.cpp" />
     <ClCompile Include="EffectSetupBase.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapEffect.cpp" />

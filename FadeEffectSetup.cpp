@@ -26,8 +26,8 @@ void FadeEffectSetup::initialise_main_interface(FadeSelectionButtons &buttons)
 	buttons.steps_minus = m_hardware.pButtons->addButton(220, 70, 40, 40, "a", BUTTON_SYMBOL);
 	buttons.steps_plus = m_hardware.pButtons->addButton(270, 70, 40, 40, "b", BUTTON_SYMBOL);
 
-	buttons.previous_config = m_hardware.pButtons->addButton(225, 180, 40, 40, "a", BUTTON_SYMBOL);
-	buttons.next_config = m_hardware.pButtons->addButton(270, 180, 40, 40, "b", BUTTON_SYMBOL);
+	buttons.previous_config = m_hardware.pButtons->addButton(220, 120, 40, 40, "a", BUTTON_SYMBOL);
+	buttons.next_config = m_hardware.pButtons->addButton(270, 120, 40, 40, "b", BUTTON_SYMBOL);
 
 	buttons.go_button = add_go_button();
 
@@ -42,7 +42,7 @@ void FadeEffectSetup::set_selected_configuration(FadeConfiguration &fade_configu
 	fade_configuration.name.toCharArray(nameBuf, 130);
 
 	m_hardware.pTft->setFont(arial_bold);
-	clear_space(20, 130, 300, 130 + m_hardware.pTft->getFontYsize());
+	clear_space(20, 130, 219, 130 + m_hardware.pTft->getFontYsize());
 
 	m_hardware.pTft->setColor(255, 255, 255);
 	m_hardware.pTft->print(fade_configuration.name, 20, 130);
@@ -95,14 +95,14 @@ int FadeEffectSetup::read_fades_from_source(FadeConfiguration **fade_configurati
 	(*fade_configuration)[2].colour_spread[0] = create_rgb(255, 0, 0);
 	(*fade_configuration)[2].colour_spread[1] = create_rgb(0, 255, 0);
 
-	(*fade_configuration)[3].name = "Red/White/Blue";
+	(*fade_configuration)[3].name = "Red/Wht/Blu";
 	(*fade_configuration)[3].num_colours = 3;
 	(*fade_configuration)[3].colour_spread = new RGB[(*fade_configuration)[3].num_colours];
 	(*fade_configuration)[3].colour_spread[0] = create_rgb(255, 0, 0);
 	(*fade_configuration)[3].colour_spread[1] = create_rgb(255, 255, 255);
 	(*fade_configuration)[3].colour_spread[2] = create_rgb(0, 0, 255);
 
-	(*fade_configuration)[4].name = "Pulsing White";
+	(*fade_configuration)[4].name = "White Pulse";
 	(*fade_configuration)[4].num_colours = 2;
 	(*fade_configuration)[4].colour_spread = new RGB[(*fade_configuration)[4].num_colours];
 	(*fade_configuration)[4].colour_spread[0] = create_rgb(0, 0, 0);

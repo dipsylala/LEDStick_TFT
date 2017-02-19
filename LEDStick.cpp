@@ -15,14 +15,17 @@
 
 #include "LEDStick.h"
 
-void LEDStick::clear_strip()
+void LEDStick::clear_strip(bool commit)
 {
 	for (uint16_t i = 0; i < m_num_pixels; i++)
 	{
 		m_neoPixel->setPixelColor(i, 0, 0, 0);
 	}
 
-	m_neoPixel->show();
+	if (commit == true)
+	{
+		m_neoPixel->show();
+	}
 }
 
 void LEDStick::set_rgb_strip_color(RGB* colours, uint16_t num_rgb)

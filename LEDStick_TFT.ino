@@ -32,23 +32,24 @@
 #include "FadeBase.h"
 #include "FadeConfiguration.h"
 #include "LEDStick.h"
-#include "BitmapEffect.h"
-#include "StarEffect.h"
-#include "FadeEffect.h"
-#include "SolidEffect.h"
 #include "Configurationmanager.h"
 #include "EepromConfiguration.h"
 #include "BitmapInfo.h"
 #include "Bitmap.h"
 #include "PaintingState.h"
 #include "PaintingStateMachine.h"
-#include "StarEffectSetup.h"
-#include "SolidEffectSetup.h"
 #include "RGB.h"
 #include "RGBController.h"
 #include "MenuSelection.h"
+#include "BitmapEffect.h"
+#include "StarEffect.h"
+#include "FadeEffect.h"
+#include "SolidEffect.h"
 #include "FadeEffectSetup.h"
 #include "BitmapEffectSetup.h"
+#include "StarEffectSetup.h"
+#include "SolidEffectSetup.h"
+#include "ChaseEffectSetup.h"
 #include "EffectSetupBase.h"
 #include "StickHardware.h"
 
@@ -107,12 +108,13 @@ void setup()
 
 	PaintingStateMachine state_machine(hardware);
 
-	int num_effects = 4;
+	int num_effects = 5;
 	EffectSetupBase **effects = new EffectSetupBase*[num_effects];
 	effects[0] = new SolidEffectSetup(hardware, &state_machine, new SolidEffect(&state_machine, hardware.pStrip));
 	effects[1] = new FadeEffectSetup(hardware, &state_machine, new FadeEffect(&state_machine, hardware.pStrip));
 	effects[2] = new BitmapEffectSetup(hardware, &state_machine, new BitmapEffect(&state_machine, hardware.pStrip));
 	effects[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
+	effects[4] = new ChaseEffectSetup(hardware, &state_machine, new ChaseEffect(&state_machine, hardware.pStrip));
 
 	ConfigurationManager *configuration_manager = new ConfigurationManager(hardware);
 
@@ -139,8 +141,5 @@ void intro_message(StickHardware hardware)
 	hardware.pTft->print("LED Stick", CENTER, 0);
 	hardware.pTft->setFont(SmallFont);
 	hardware.pTft->print("Digital LightStick v0.10 BETA", CENTER, 16);
-	hardware.pTft->print("by Justin Barkby", CENTER, 50);
-	hardware.pTft->print("(and a little by Cus)", CENTER, 70);
+	hardware.pTft->print("by Justin Barkby and Cus", CENTER, 50);
 }
-
-

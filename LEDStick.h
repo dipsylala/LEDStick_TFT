@@ -39,7 +39,7 @@ public:
 	void set_rgb_strip_color(RGB* colours, uint16_t num_rgb);
 
 	void commit();
-	void clear_strip();
+	void clear_strip(bool commit = true);
 	void set_pixel_color(uint16_t pixel_index, uint8_t red, uint8_t green, uint8_t blue);
 	void set_stick_length(uint16_t length);
 	uint16_t get_stick_length();
