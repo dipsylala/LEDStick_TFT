@@ -58,7 +58,7 @@ void ChaseEffectSetup::setup_loop()
 	boolean back_pressed = false;
 	uint32_t total_leds = m_hardware.pStrip->get_stick_length();
 
-	uint32_t number_of_partitions = 6;
+	uint32_t number_of_partitions = 7;
 	uint32_t size_of_partition = total_leds / number_of_partitions;
 
 	initialise_main_interface(main_buttons);
