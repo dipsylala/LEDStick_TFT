@@ -114,7 +114,6 @@
     <ClInclude Include="RGBController.h" />
     <ClInclude Include="SolidEffectSetup.h" />
     <ClInclude Include="StickHardware.h" />
-    <ClInclude Include="__vm\.LEDStick_TFT.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arial_bold.c" />
