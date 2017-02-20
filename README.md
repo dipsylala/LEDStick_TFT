@@ -12,8 +12,6 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 ## Installation
 
-I've been testing under 1.5 - mainly because it's more convenient for the hardware I've got (mental note to avoid Sainsmart next time). Compiles under 1.8 but the SD card doesn't work.
-
 There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party Libraries folder. Add these to your Arduino library.
 
 The AdaFruit NeoPixel library can be retrieved from the usual sources and included. It can be the latest one.
