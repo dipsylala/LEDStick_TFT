@@ -14,7 +14,18 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 I've been testing under 1.5 - mainly because it's more convenient for the hardware I've got (mental note to avoid Sainsmart next time). Compiles under 1.8 but the SD card doesn't work.
 
-Chuck it into Visual Studio/Arduino IDE, compile, upload.
+There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party Libraries folder. Add these to your Arduino library.
+
+The AdaFruit NeoPixel library can be retrieved from the usual sources and included. It can be the latest one.
+
+Using the Arduino IDE:
+* File/Open and open LEDStick_TFT.ino - you'll see all the other files in the directory appear too.
+* Verify/Upload and you should be good. If you want to try it without the stick added it'll still display details on the screen.
+
+Using Visual Studio (with the Arduino addin from http://www.visualmicro.com/)
+* Open the LEDStick_TFT.sln file
+* Select Build/Upload
+
 
 ## API Reference
 
