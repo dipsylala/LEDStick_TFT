@@ -46,7 +46,7 @@ void ChaseEffectSetup::show_current_partitions(uint32_t partition_size)
 	m_hardware.pTft->setFont(arial_bold);
 
 	m_hardware.pTft->setColor(255, 255, 255);
-	m_hardware.pTft->print("Steps: " + String(partition_size), 20, 80);
+	m_hardware.pTft->print("Steps: " + String(partition_size) + " ", 20, 80);
 }
 
 // Configuring the effect - may or may not include a 'preview' on the stick itself
@@ -113,7 +113,7 @@ void ChaseEffectSetup::setup_loop()
 				show_current_partitions(number_of_partitions);
 			}
 
-			if (pressed_button == main_buttons.larger_partition && number_of_partitions < 10)
+			if (pressed_button == main_buttons.larger_partition && number_of_partitions < 21)
 			{
 				number_of_partitions++;
 				show_current_partitions(number_of_partitions);

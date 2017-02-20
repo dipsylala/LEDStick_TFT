@@ -6,3 +6,8 @@
 /__vm/Configuration.Debug.vmps.xml
 /__vm/Compile.vmps.xml
 /Release
+/.vs
+/__vm
+/__vm/Upload.vmps.xml
+/__vm/Configuration.Release.vmps.xml
+/__vm/.LEDStick_TFT.vsarduino.h
