@@ -18,18 +18,19 @@ There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party L
 
 The AdaFruit NeoPixel library can be retrieved from the usual sources and included. It can be the latest one.
 
-Using the Arduino IDE:
+### Using the Arduino IDE:
+* I've used Arduino IDE 1.5.8 and 1.8.1 for compile-testing
 * File/Open and open LEDStick_TFT.ino - you'll see all the other files in the directory appear too.
 * Verify/Upload and you should be good. If you want to try it without the stick added it'll still display details on the screen.
 
-Using Visual Studio (with the Arduino addin from http://www.visualmicro.com/)
+### Using Visual Studio (with the Arduino addin from http://www.visualmicro.com/)
 * Open the LEDStick_TFT.sln file
 * Select Build/Upload
 
 
 ## API Reference
 
-I've made this extensible (mainly so I could test it, but I'm using this for a Teensy version that's controlled by bluetooth')
+I've made this extensible (mainly so I could test it, but I'm using this for a Teensy version that's controlled by bluetooth)
 
 Look at SolidEffect.cpp, SolidEffect.h, SolidEffectSetup.cpp and SolidEffectSetup.h for a basic example.
 
@@ -43,7 +44,7 @@ More effects! :) Bitmaps are looking a little crowded now so maybe not more we c
 
 Multiple bitmaps in one painting session, controllable by GPIO? Code is there, but looking at UI and how to control it mid-paint.
 
-Read Fades in a basic form from the SD card. Structure already there in read_fades_from_source in FadeEffectSetup. JSON/XML read into the structure. 
+Read Fade configurations in a basic form from the SD card. Structure is already there in read_fades_from_source in FadeEffectSetup. JSON/XML read into the structure. 
 
 If you wanted to, you could switch out the TFT and go back to LCD. The interface is held in MenuSelection.cpp and *Setup.cpp. Those essentially hold the UI.
 
