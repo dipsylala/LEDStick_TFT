@@ -39,6 +39,15 @@ RGB EffectSetupBase::create_rgb(uint8_t red, uint8_t green, uint8_t blue)
 	return colour;
 }
 
+RGB EffectSetupBase::create_rgb(uint32_t rgb)
+{
+	RGB colour;
+	colour.red = rgb >> 16;
+	colour.green = rgb >> 8;
+	colour.blue = rgb & 0xFF;
+	return colour;
+}
+
 int EffectSetupBase::add_back_button()
 {
 	return m_hardware.pButtons->addButton(10, 180, 100, 40, "Back");

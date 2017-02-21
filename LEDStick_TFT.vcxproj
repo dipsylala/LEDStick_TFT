@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BrightnessConfigurationManager.h" />
+    <ClInclude Include="ChaseConfiguration.h" />
     <ClInclude Include="ChaseEffect.h" />
     <ClInclude Include="ChaseEffectSetup.h" />
     <ClInclude Include="EffectSetupBase.h" />

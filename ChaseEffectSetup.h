@@ -25,6 +25,7 @@
 #include "EffectSetupBase.h"
 #include "RGBController.h"
 #include "PaintingState.h"
+#include "ChaseConfiguration.h"
 #include "ChaseEffect.h"
 
 class ChaseEffectSetup : public EffectSetupBase
@@ -36,6 +37,8 @@ private:
 		uint32_t faster_button;
 		uint32_t smaller_partition;
 		uint32_t larger_partition;
+		uint32_t previous_config;
+		uint32_t next_config;
 		uint32_t back_button;
 		uint32_t go_button;
 	} ChaseSelectionButtons;
@@ -44,7 +47,8 @@ private:
 	void setup_loop ();
 	void show_current_delay(uint32_t delay);
 	void show_current_partitions(uint32_t partition_size);
-
+	void show_selected_configuration(ChaseConfiguration &chase_configuration);
+	int read_chases_from_source(ChaseConfiguration **chase_configuration);
 	RGBController rgbController;
 	ChaseEffect *m_effect;
 
