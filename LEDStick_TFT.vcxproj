@@ -89,6 +89,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BrightnessConfigurationManager.h" />
     <ClInclude Include="ChaseEffect.h" />
     <ClInclude Include="ChaseEffectSetup.h" />
     <ClInclude Include="EffectSetupBase.h" />
@@ -96,7 +97,7 @@
     <ClInclude Include="BitmapEffect.h" />
     <ClInclude Include="BitmapInfo.h" />
     <ClInclude Include="BitmapEffectSetup.h" />
-    <ClInclude Include="ConfigurationManager.h" />
+    <ClInclude Include="LengthConfigurationManager.h" />
     <ClInclude Include="EepromConfiguration.h" />
     <ClInclude Include="FadeBase.h" />
     <ClInclude Include="FadeConfiguration.h" />
@@ -118,13 +119,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arial_bold.c" />
+    <ClCompile Include="BrightnessConfigurationManager.cpp" />
     <ClCompile Include="ChaseEffect.cpp" />
     <ClCompile Include="ChaseEffectSetup.cpp" />
     <ClCompile Include="EffectSetupBase.cpp" />
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapEffect.cpp" />
     <ClCompile Include="BitmapEffectSetup.cpp" />
-    <ClCompile Include="ConfigurationManager.cpp" />
+    <ClCompile Include="LengthConfigurationManager.cpp" />
     <ClCompile Include="EepromConfiguration.cpp" />
     <ClCompile Include="FadeBase.cpp" />
     <ClCompile Include="FadeEffect.cpp" />

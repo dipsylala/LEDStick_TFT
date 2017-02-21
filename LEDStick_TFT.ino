@@ -32,7 +32,8 @@
 #include "FadeBase.h"
 #include "FadeConfiguration.h"
 #include "LEDStick.h"
-#include "Configurationmanager.h"
+#include "LengthConfigurationmanager.h"
+#include "BrightnessConfigurationmanager.h"
 #include "EepromConfiguration.h"
 #include "BitmapInfo.h"
 #include "Bitmap.h"
@@ -116,9 +117,10 @@ void setup()
 	effects[3] = new StarEffectSetup(hardware, &state_machine, new StarEffect(&state_machine, hardware.pStrip));
 	effects[4] = new ChaseEffectSetup(hardware, &state_machine, new ChaseEffect(&state_machine, hardware.pStrip));
 
-	ConfigurationManager *configuration_manager = new ConfigurationManager(hardware);
+	LengthConfigurationManager *length_configuration_manager = new LengthConfigurationManager(hardware);
+	BrightnessConfigurationManager *brightness_configuration_manager = new BrightnessConfigurationManager(hardware);
 
-	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, configuration_manager);
+	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, length_configuration_manager, brightness_configuration_manager);
 	menu_selection->run();
 
 	for (uint32_t i = 0; i < num_effects; i++)

@@ -26,6 +26,8 @@ void LEDStick::clear_strip(bool commit)
 	{
 		m_neoPixel->show();
 	}
+
+	
 }
 
 void LEDStick::set_rgb_strip_color(RGB* colours, uint16_t num_rgb)
@@ -74,10 +76,23 @@ uint16_t LEDStick::get_stick_length()
 	return m_num_pixels;
 }
 
+uint8_t LEDStick::get_stick_brightness()
+{
+	return m_neoPixel->getBrightness();
+}
+
+void LEDStick::set_stick_brightness(uint8_t brightness)
+{
+	m_neoPixel->setBrightness(brightness);
+	m_neoPixel->show();
+}
+
 LEDStick::LEDStick(uint16_t num_pixels)
 {
 	m_num_pixels = num_pixels;
 	m_neoPixel = new Adafruit_NeoPixel(num_pixels, GPIO_PIN, NEO_GRB + NEO_KHZ800);
 	m_neoPixel->begin();
 	m_neoPixel->show();
+
+	m_neoPixel->getBrightness();
 }

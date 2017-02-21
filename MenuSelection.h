@@ -25,7 +25,8 @@
 #include "StickHardware.h"
 #include "EffectSetupBase.h"
 #include "RGBController.h"
-#include "ConfigurationManager.h"
+#include "LengthConfigurationManager.h"
+#include "BrightnessConfigurationManager.h"
 
 extern uint8_t arial_bold[];
 
@@ -34,12 +35,14 @@ class MenuSelection
 private:
 	StickHardware m_hardware;
 	EffectSetupBase **m_effect_setups;
-	ConfigurationManager *m_configuration_manager;
+	LengthConfigurationManager *m_length_configuration_manager;
+	BrightnessConfigurationManager *m_brightness_configuration_manager;
 
 	uint32_t m_previous_button;
 	uint32_t m_select_button;
 	uint32_t m_next_button;
-	uint32_t m_setup_button;
+	uint32_t m_length_setup_button;
+	uint32_t m_brightness_setup_button;
 
 	uint32_t m_total_effects = 0;
 
@@ -47,7 +50,7 @@ private:
 	void set_selected_processor(int selected_mode);
 
 public:
-	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, ConfigurationManager *configuration_manager);
+	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, LengthConfigurationManager *length_configuration_manager, BrightnessConfigurationManager *brightness_configuration_manager);
 	void run();
 };
 

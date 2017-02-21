@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef _CONFIGURATIONMANAGER_h
-#define _CONFIGURATIONMANAGER_h
+#ifndef _LENGTHCONFIGURATIONMANAGER_h
+#define _LENGTHCONFIGURATIONMANAGER_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -28,10 +28,7 @@
 extern uint8_t arial_bold[];
 extern uint8_t SmallFont[];
 
-#define CONFIGURATION_APPLY  -1
-#define CONFIGURATION_CANCEL -2
-
-class ConfigurationManager
+class LengthConfigurationManager
 {
 private:
 
@@ -43,17 +40,17 @@ private:
 		uint16_t pixel_one;
 		uint16_t pixel_plus_twenty;
 		uint16_t pixel_down;
-	} ConfigurationManagerButtons;
+	} LengthConfigurationManagerButtons;
 
 	StickHardware m_hardware;
 
 	ConfigurationData setup_loop();
-	void create_user_interface(ConfigurationManagerButtons *buttons);
-	void display_current_pixels(uint16_t previous_pixel_index, uint16_t current_pixel_index);
+	void create_user_interface(LengthConfigurationManagerButtons *buttons);
+	void display_current_pixels(uint16_t current_pixel_index);
 
 public:
 	ConfigurationData engage();
-	ConfigurationManager(StickHardware hardware);
+	LengthConfigurationManager(StickHardware hardware);
 };
 
 

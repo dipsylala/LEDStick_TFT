@@ -43,6 +43,8 @@ public:
 	void set_pixel_color(uint16_t pixel_index, uint8_t red, uint8_t green, uint8_t blue);
 	void set_stick_length(uint16_t length);
 	uint16_t get_stick_length();
+	uint8_t get_stick_brightness();
+	void set_stick_brightness(uint8_t brightness);
 	LEDStick(uint16_t num_pixels);
 
 };

@@ -51,7 +51,6 @@ void FadeEffectSetup::set_selected_configuration(FadeConfiguration &fade_configu
 void FadeEffectSetup::show_current_delay(uint32_t delay)
 {
 	m_hardware.pTft->setFont(arial_bold);
-
 	m_hardware.pTft->setColor(255, 255, 255);
 	m_hardware.pTft->print("Speed: " + String((200 - delay)/2) + "% ", 20, 30);
 }

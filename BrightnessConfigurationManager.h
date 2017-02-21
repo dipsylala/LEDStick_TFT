@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef _EEPROMCONFIGURATION_h
-#define _EEPROMCONFIGURATION_h
+#ifndef _BRIGHTNESSCONFIGURATIONMANAGER_h
+#define _BRIGHTNESSCONFIGURATIONMANAGER_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -22,28 +22,35 @@
 	#include "WProgram.h"
 #endif
 
-#include<eeprom.h>
+#include "StickHardware.h"
+#include "EepromConfiguration.h"
 
-#define CONFIG_VERSION "002"
-#define CONFIG_START 32
+extern uint8_t arial_bold[];
+extern uint8_t SmallFont[];
 
-typedef struct  {
-	char version[4];
-	uint16_t num_pixels;
-	uint8_t brightness;
-} ConfigurationData;
-
-class EepromConfiguration
+class BrightnessConfigurationManager
 {
 private:
-	ConfigurationData loaded_data;
-	void assign_default_values();
-	bool same_configuration_version();
+
+	typedef struct
+	{
+		uint16_t cancel_button;
+		uint16_t ok_button;
+		uint16_t brightness_down;
+		uint16_t brightness_up;
+	} BrightnessConfigurationManagerButtons;
+
+	StickHardware m_hardware;
+
+	ConfigurationData setup_loop();
+	void create_user_interface(BrightnessConfigurationManagerButtons *buttons);
+	void display_current_brightness(uint8_t brightness);
 
 public:
-	ConfigurationData read_configuration();
-	void write_configuration(ConfigurationData &configuration_data);
+	ConfigurationData engage();
+	BrightnessConfigurationManager(StickHardware hardware);
 };
+
 
 #endif
 

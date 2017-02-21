@@ -13,9 +13,9 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#include "ConfigurationManager.h"
+#include "LengthConfigurationManager.h"
 
-void ConfigurationManager::create_user_interface(ConfigurationManagerButtons *buttons)
+void LengthConfigurationManager::create_user_interface(LengthConfigurationManagerButtons *buttons)
 {
 	m_hardware.pButtons->deleteAllButtons();
 	m_hardware.pTft->setColor(255, 255, 255);
@@ -36,9 +36,9 @@ void ConfigurationManager::create_user_interface(ConfigurationManagerButtons *bu
 	m_hardware.pButtons->drawButtons();
 }
 
-void ConfigurationManager::display_current_pixels(uint16_t previous_pixel_index, uint16_t current_pixel_index)
+void LengthConfigurationManager::display_current_pixels(uint16_t current_pixel_index)
 {
-	m_hardware.pStrip->set_pixel_color(previous_pixel_index, 0, 0, 0);
+	m_hardware.pStrip->clear_strip(false);
 	m_hardware.pStrip->set_pixel_color(current_pixel_index, 255, 255, 255);
 	m_hardware.pStrip->commit();
 	
@@ -49,22 +49,22 @@ void ConfigurationManager::display_current_pixels(uint16_t previous_pixel_index,
 	m_hardware.pTft->print(String(current_pixel_index + 1) + " pixel" + (current_pixel_index == 0?"":"s"), 10, 55);
 }
 
-ConfigurationData ConfigurationManager::setup_loop()
+ConfigurationData LengthConfigurationManager::setup_loop()
 {
 	EepromConfiguration configuration;
 	ConfigurationData configuration_settings = configuration.read_configuration();
-	ConfigurationManagerButtons buttons;
+	LengthConfigurationManagerButtons buttons;
 	create_user_interface(&buttons);
 
 	boolean ok_pressed = false;
 	boolean cancel_pressed = false;
 
-	uint16_t previous_pixel_index = 0;
 	uint16_t pixel_index = configuration_settings.num_pixels - 1 ;
 
 	m_hardware.pStrip->set_stick_length(300);
 
-	display_current_pixels(0, pixel_index);
+	display_current_pixels(pixel_index);
+
 
 	while (ok_pressed == false && cancel_pressed == false)
 	{
@@ -72,32 +72,35 @@ ConfigurationData ConfigurationManager::setup_loop()
 
 		if (pressed_button == buttons.pixel_one)
 		{
-			previous_pixel_index = pixel_index;
 			pixel_index = 0;
-			display_current_pixels(previous_pixel_index, pixel_index);
+			display_current_pixels(pixel_index);
 		}
 
 		if (pressed_button == buttons.pixel_down || pressed_button == buttons.pixel_up || pressed_button == buttons.pixel_plus_twenty)
 		{
 			if (pressed_button == buttons.pixel_down && pixel_index > 1)
 			{
-				previous_pixel_index = pixel_index;
 				pixel_index--;
 			}
 
 			if (pressed_button == buttons.pixel_up)
 			{
-				previous_pixel_index = pixel_index;
 				pixel_index++;
 			}
 
 			if (pressed_button == buttons.pixel_plus_twenty)
 			{
-				previous_pixel_index = pixel_index;
 				pixel_index += 20;
 			}
 
-			display_current_pixels(previous_pixel_index, pixel_index);
+			display_current_pixels(pixel_index);
+		}
+
+
+
+		if (pressed_button == buttons.pixel_plus_twenty)
+		{
+			pixel_index += 20;
 		}
 
 		if (pressed_button == buttons.cancel_button)
@@ -126,7 +129,7 @@ ConfigurationData ConfigurationManager::setup_loop()
 	return configuration_settings;
 }
 
-ConfigurationData ConfigurationManager::engage()
+ConfigurationData LengthConfigurationManager::engage()
 {
 	m_hardware.pTft->clrScr();
 	m_hardware.pTft->setFont(arial_bold);
@@ -136,7 +139,7 @@ ConfigurationData ConfigurationManager::engage()
 	return setup_loop();
 }
 
-ConfigurationManager::ConfigurationManager(StickHardware hardware)
+LengthConfigurationManager::LengthConfigurationManager(StickHardware hardware)
 {
 	m_hardware = hardware;
 }
