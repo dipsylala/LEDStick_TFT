@@ -71,7 +71,6 @@ private:
 	void display_frame_delay(uint32_t frame_delay);
 	void display_repeat(BitmapSelectionButtons &buttons, boolean repeat);
 	void display_random_offset(BitmapSelectionButtons &buttons, boolean random_offset);
-	void clear_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height);
 	void display_current_bitmap(uint32_t x, uint32_t y, uint32_t display_width, uint32_t display_height);
 	void retrieve_bitmap_details(String bitmap_filename);
 	void initialise_sd_read_menu(SdCardCancelButtons &buttons);

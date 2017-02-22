@@ -40,7 +40,7 @@ void ChaseEffect::start_painting(RGB &color, uint32_t pulse_delay, uint32_t numb
 		}
 		case Painting:
 		{
-			if (current_partition_index == number_of_partitions - 1)
+			if (current_partition_index == number_of_partitions - 2)
 			{
 				current_partition_index = 0;
 			}
