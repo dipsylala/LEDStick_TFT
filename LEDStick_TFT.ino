@@ -77,9 +77,12 @@ void setup()
 
 	Serial.println("Creating TFT");
 	tft = new UTFT(ITDB32S, 38, 39, 40, 41);
+  Serial.println("UTFT Version: " + String (UTFT_VERSION));
+  
 	Serial.println("Creating Touch");
 	touch = new UTouch(6, 5, 4, 3, 2);
 	Serial.println("Creating Buttons");
+  Serial.println("UTFT Buttons Version: " + String (UTFT_BUTTONS_VERSION));
 	buttons = new UTFT_Buttons(tft, touch);
 
 	Serial.println("Retrieving Configuration");
