@@ -12,9 +12,10 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 ## Installation
 
-There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party Libraries folder. Add these to your Arduino library.
+There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party Libraries folder. Add these to your Arduino library. They're the latest versions, but UTFT needed tweaking for versions of the ITDB32S Sainsmart display (look in UTFT\tft_drivers\ssd1289).
+These libraries can also be retrieved from http://www.rinkydinkelectronics.com
 
-The AdaFruit NeoPixel library can be retrieved from the usual sources and included. It can be the latest one.
+The AdaFruit NeoPixel library can be retrieved from the usual sources and included (https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation).
 
 ### Using the Arduino IDE:
 * I've used Arduino IDE 1.5.8 and 1.8.1 for compile-testing
@@ -23,8 +24,10 @@ The AdaFruit NeoPixel library can be retrieved from the usual sources and includ
 
 ### Using Visual Studio (with the Arduino addin from http://www.visualmicro.com/)
 * Open the LEDStick_TFT.sln file
+* Set the appropriate COM port for the Arduino
 * Select Build/Upload
 
+In both cases if you need debug, the application sends diagnostics over the serial port.
 
 ## API Reference
 
