@@ -27,9 +27,9 @@
     <None Include="Documentation\LEDStick-simple-build.pdf">
       <Filter>Documentation</Filter>
     </None>
+    <None Include="3rd Party Libraries\URTouch.zip" />
     <None Include="3rd Party Libraries\UTFT.zip" />
     <None Include="3rd Party Libraries\UTFT_Buttons.zip" />
-    <None Include="3rd Party Libraries\UTouch.zip" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StickHardware.h">
@@ -189,5 +189,8 @@
     <Image Include="Resources\color_picker.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="3rd Party Libraries\readme.txt" />
   </ItemGroup>
 </Project>

@@ -19,8 +19,8 @@
 
 
 #if defined(__AVR__)
-#include <UTouchCD.h>
-#include <UTouch.h>
+#include <URTouchCD.h>
+#include <URTouch.h>
 #include <UTFT_Buttons.h>
 #include <UTFT.h>
 #include <SD.h>
@@ -28,7 +28,6 @@
 #include <SPI.h>
 #include <memorysaver.h>
 #include <Adafruit_NeoPixel.h>
-#include <TFT.h>
 #include "FadeBase.h"
 #include "FadeConfiguration.h"
 #include "LEDStick.h"
@@ -67,22 +66,33 @@ extern uint8_t arial_bold[];
 extern uint8_t Various_Symbols_32x32[];
 
 UTFT *tft;
-UTouch  *touch;
+URTouch  *touch;
 UTFT_Buttons *buttons;
 LEDStick *stick;
+StickHardware hardware;
+
+void intro_message(StickHardware hardware)
+{
+	hardware.pTft->setFont(arial_bold);
+	hardware.pTft->setBackColor(0, 0, 0);
+	hardware.pTft->print(String("LED Stick"), CENTER, 0);
+	hardware.pTft->setFont(SmallFont);
+	hardware.pTft->print(String("Digital LightStick v0.10 BETA"), CENTER, 16);
+	hardware.pTft->print(String("by Justin Barkby and Cus"), CENTER, 50);
+}
 
 void setup()
 {
-	Serial.begin(115200);
+	Serial.begin(9600);
 
 	Serial.println("Creating TFT");
 	tft = new UTFT(ITDB32S, 38, 39, 40, 41);
-  Serial.println("UTFT Version: " + String (UTFT_VERSION));
+	Serial.println("UTFT Version: " + String (UTFT_VERSION));
   
 	Serial.println("Creating Touch");
-	touch = new UTouch(6, 5, 4, 3, 2);
+	touch = new URTouch(6, 5, 4, 3, 2);
 	Serial.println("Creating Buttons");
-  Serial.println("UTFT Buttons Version: " + String (UTFT_BUTTONS_VERSION));
+	Serial.println("UTFT Buttons Version: " + String (UTFT_BUTTONS_VERSION));
 	buttons = new UTFT_Buttons(tft, touch);
 
 	Serial.println("Retrieving Configuration");
@@ -92,7 +102,7 @@ void setup()
 
 	Serial.println("Initialising LEDStick");
 
-	StickHardware hardware;
+
 	hardware.pStrip = new LEDStick(config_data.num_pixels);
 	hardware.pTft = tft;
 	hardware.pTft->InitLCD();
@@ -109,7 +119,10 @@ void setup()
 
 	intro_message(hardware);
 	delay(1000);
+}
 
+void loop()
+{
 	PaintingStateMachine state_machine(hardware);
 
 	int num_effects = 5;
@@ -131,20 +144,6 @@ void setup()
 		delete effects[i];
 	}
 
-	delete effects;
+	delete *effects;
 }
 
-void loop()
-{
-
-}
-
-void intro_message(StickHardware hardware)
-{
-	hardware.pTft->setFont(arial_bold);
-	hardware.pTft->setBackColor(0, 0, 0);
-	hardware.pTft->print("LED Stick", CENTER, 0);
-	hardware.pTft->setFont(SmallFont);
-	hardware.pTft->print("Digital LightStick v0.10 BETA", CENTER, 16);
-	hardware.pTft->print("by Justin Barkby and Cus", CENTER, 50);
-}

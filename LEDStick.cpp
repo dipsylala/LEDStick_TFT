@@ -26,8 +26,6 @@ void LEDStick::clear_strip(bool commit)
 	{
 		m_neoPixel->show();
 	}
-
-	
 }
 
 void LEDStick::set_rgb_strip_color(RGB* colours, uint16_t num_rgb)

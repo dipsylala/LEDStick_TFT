@@ -23,7 +23,7 @@
 #endif
 
 #include <UTFT.h>
-#include <UTouch.h>	
+#include <URTouch.h>	
 #include <UTFT_Buttons.h>
 #include "LEDStick.h"
 
@@ -32,7 +32,7 @@ class StickHardware
 public:
 	LEDStick *pStrip;
 	UTFT *pTft;
-	UTouch *pTouch;
+	URTouch *pTouch;
 	UTFT_Buttons *pButtons;
 };
 
