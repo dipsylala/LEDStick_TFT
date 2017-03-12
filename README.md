@@ -39,9 +39,9 @@ In both cases if you need debug, the application sends diagnostics over the seri
 
 * Selecting Solid/Fade causes the Arduino to reboot.
 	There's a chance you're not supplying enough amperage to the Arduino/Stick
-	A Mega 2560 running the software draws approx 330mA
-	20% brightness, 144 pixels showing white: 540mA
-	9% brightness, 144 pixels showing white: 413mA
+	* A Mega 2560 running the software draws approx 330mA
+	* 20% brightness, 144 pixels showing white: 540mA
+	* 9% brightness, 144 pixels showing white: 413mA
 	If you're running this off a USB port it may not be able to support a higher amperage and things start rebooting.
 
 ## API Reference
