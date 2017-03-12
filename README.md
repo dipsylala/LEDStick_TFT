@@ -29,6 +29,21 @@ The AdaFruit NeoPixel library can be retrieved from the usual sources and includ
 
 In both cases if you need debug, the application sends diagnostics over the serial port.
 
+## Troubleshooting
+* Blank screen on startup
+	If you're running a Sainsmart screen you might be running a slightly different variation. In the UTFT\tft_drivers\ssd1289\ library folder there are 2 files:
+	* initlcd.h
+	* initlcd.h.original
+    Try deleting or renaming the initlcd.h to initlcd.h.new
+    Then rename the initlcd.h.original to initlcd.h
+
+* Selecting Solid/Fade causes the Arduino to reboot.
+	There's a chance you're not supplying enough amperage to the Arduino/Stick
+	A Mega 2560 running the software draws approx 330mA
+	20% brightness, 144 pixels showing white: 540mA
+	9% brightness, 144 pixels showing white: 413mA
+	If you're running this off a USB port it may not be able to support a higher amperage and things start rebooting.
+
 ## API Reference
 
 I've made this extensible (mainly so I could test it, but I'm using this for a Teensy version that's controlled by bluetooth)
