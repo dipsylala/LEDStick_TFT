@@ -65,9 +65,10 @@ extern uint8_t SmallFont[];
 extern uint8_t arial_bold[];
 extern uint8_t Various_Symbols_32x32[];
 
-UTFT *tft;
-URTouch  *touch;
-UTFT_Buttons *buttons;
+UTFT tft(ITDB32S, 38, 39, 40, 41);
+URTouch  touch(6, 5, 4, 3, 2);
+UTFT_Buttons buttons (&tft, &touch);
+
 LEDStick *stick;
 StickHardware hardware;
 
@@ -83,17 +84,19 @@ void intro_message(StickHardware hardware)
 
 void setup()
 {
-	Serial.begin(9600);
+	Serial.begin(115200);
 
-	Serial.println("Creating TFT");
-	tft = new UTFT(ITDB32S, 38, 39, 40, 41);
+	Serial.println("Initialising Screen");
+	tft.InitLCD(LANDSCAPE);
 	Serial.println("UTFT Version: " + String (UTFT_VERSION));
   
-	Serial.println("Creating Touch");
-	touch = new URTouch(6, 5, 4, 3, 2);
+	Serial.println("Initialising Touch");
+	hardware.pTouch = &touch;
+	hardware.pTouch->InitTouch(LANDSCAPE);
+	hardware.pTouch->setPrecision(PREC_HI);
+
 	Serial.println("Creating Buttons");
 	Serial.println("UTFT Buttons Version: " + String (UTFT_BUTTONS_VERSION));
-	buttons = new UTFT_Buttons(tft, touch);
 
 	Serial.println("Retrieving Configuration");
 
@@ -102,19 +105,13 @@ void setup()
 
 	Serial.println("Initialising LEDStick");
 
-
 	hardware.pStrip = new LEDStick(config_data.num_pixels);
-	hardware.pTft = tft;
+	hardware.pTft = &tft;
 	hardware.pTft->InitLCD();
 	hardware.pTft->clrScr();
 	hardware.pTft->setFont(arial_bold);
 
-	Serial.println("Initialising Touch");
-	hardware.pTouch = touch;
-	hardware.pTouch->InitTouch(LANDSCAPE);
-	hardware.pTouch->setPrecision(PREC_HI);
-
-	hardware.pButtons = buttons;
+	hardware.pButtons = &buttons;
 	hardware.pButtons->setSymbolFont(Various_Symbols_32x32);
 
 	intro_message(hardware);

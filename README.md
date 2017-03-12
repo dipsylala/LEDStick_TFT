@@ -1,6 +1,6 @@
 ## Synopsis
 
-LEDStick_TFT is designed primarily for lightsticks based on Michael Ross' original tutorial (http://mrossphoto.com/digital-light-wand/), and TFT concept was added by Justin Barkby (https://github.com/barkby/LEDStick)
+LEDStick_TFT is designed primarily for lightsticks based on Michael Ross' original tutorial (http://mrossphoto.com/digital-light-wand/), and the TFT concept was added by Justin Barkby (https://github.com/barkby/LEDStick)
 
 We've taken the original concept and hooked it up to a Mega 2560, Sainsmart TFT shield, and Sainsmart TFT (TFT_320QVT). The TFT goes through UTFT so in theory any UTFT supported TFT's should be ok.
 
@@ -12,7 +12,7 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 ## Installation
 
-There are some 3rd party files for the TFT, SD Card and Touch in the 3rd Party Libraries folder. Add these to your Arduino library. They're the latest versions, but UTFT needed tweaking for versions of the ITDB32S Sainsmart display (look in UTFT\tft_drivers\ssd1289).
+There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder. Add these to your Arduino library. They're the latest versions, but UTFT needed tweaking for versions of the ITDB32S Sainsmart display (look in UTFT\tft_drivers\ssd1289).
 These libraries can also be retrieved from http://www.rinkydinkelectronics.com
 
 The AdaFruit NeoPixel library can be retrieved from the usual sources and included (https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation).
