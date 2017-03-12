@@ -34,6 +34,7 @@ In both cases if you need debug, the application sends diagnostics over the seri
 	If you're running a Sainsmart screen you might be running a slightly different variation. In the UTFT\tft_drivers\ssd1289\ library folder there are 2 files:
 	* initlcd.h
 	* initlcd.h.original
+
     Try deleting or renaming the initlcd.h to initlcd.h.new
     Then rename the initlcd.h.original to initlcd.h
 
