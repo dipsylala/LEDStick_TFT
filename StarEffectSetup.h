@@ -23,8 +23,6 @@
 #endif
 
 #include "EffectSetupBase.h"
-#include "PaintingState.h"
-#include "RGBController.h"
 #include "StarEffect.h"
 
 class StarEffectSetup : public EffectSetupBase
@@ -44,11 +42,11 @@ private:
 	StarEffect *m_effect;
 
 	void initialise_main_interface(StarSelectionButtons &buttons);
-	void setup_loop();
+	void setup_loop() override;
 
 public:
-	String name();
-	void engage();
+	String name() override;
+	void engage() override;
 	StarEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, StarEffect *effect);
 };
 

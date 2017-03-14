@@ -24,7 +24,6 @@
 
 #include "EffectSetupBase.h"
 #include "RGBController.h"
-#include "PaintingState.h"
 #include "ChaseConfiguration.h"
 #include "ChaseEffect.h"
 
@@ -44,7 +43,7 @@ private:
 	} ChaseSelectionButtons;
 
 	void initialise_main_interface(ChaseSelectionButtons &buttons);
-	void setup_loop ();
+	void setup_loop () override;
 	void show_current_delay(uint32_t delay);
 	void show_current_partitions(uint32_t partition_size);
 	void show_selected_configuration(ChaseConfiguration &chase_configuration);
@@ -53,8 +52,8 @@ private:
 	ChaseEffect *m_effect;
 
 public:
-	String name();
-	void engage();
+	String name() override;
+	void engage() override;
 	ChaseEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, ChaseEffect *effect);
 };
 

@@ -24,7 +24,6 @@
 
 #include "StickHardware.h"
 #include "EffectSetupBase.h"
-#include "RGBController.h"
 #include "LengthConfigurationManager.h"
 #include "BrightnessConfigurationManager.h"
 

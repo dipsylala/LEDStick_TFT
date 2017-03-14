@@ -23,9 +23,7 @@
 #endif
 
 #include <SD.h>
-#include <SPI.h>
 #include "EffectSetupBase.h"
-#include "PaintingState.h"
 #include "Bitmap.h"
 #include "BitmapEffect.h"
 
@@ -75,12 +73,12 @@ private:
 	void retrieve_bitmap_details(String bitmap_filename);
 	void initialise_sd_read_menu(SdCardCancelButtons &buttons);
 	void initialise_main_interface(BitmapSelectionButtons &buttons);
-	void setup_loop();
+	void setup_loop() override;
 	void set_blank_bitmap_page();
 
 public:
-	String name();
-	void engage();
+	String name() override;
+	void engage() override;
 	BitmapEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, BitmapEffect *effect);
 };
 

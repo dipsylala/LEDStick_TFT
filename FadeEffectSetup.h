@@ -23,7 +23,6 @@
 #endif
 
 #include "EffectSetupBase.h"
-#include "PaintingState.h"
 #include "FadeConfiguration.h"
 #include "FadeBase.h"
 #include "FadeEffect.h"
@@ -51,11 +50,11 @@ private:
 	void set_selected_configuration(FadeConfiguration &fade_configuration);
 	void show_current_delay(uint32_t delay);
 	void show_current_steps(uint32_t steps);
-	void setup_loop();
+	void setup_loop() override;
 
 public:
-	String name();
-	void engage();
+	String name() override;
+	void engage() override;
 	FadeEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, FadeEffect *effect);
 };
 

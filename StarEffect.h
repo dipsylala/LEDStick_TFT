@@ -22,7 +22,6 @@
 	#include "WProgram.h"
 #endif
 
-#include "RGB.h"
 #include "LEDStick.h"
 #include "PaintingStateMachine.h"
 

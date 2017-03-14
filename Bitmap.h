@@ -23,7 +23,6 @@
 #endif
 
 #include <SD.h>
-#include <SPI.h>
 
 #include "BitmapInfo.h"
 #include "RGB.h"

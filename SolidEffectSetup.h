@@ -24,7 +24,6 @@
 
 #include "EffectSetupBase.h"
 #include "RGBController.h"
-#include "PaintingState.h"
 #include "SolidEffect.h"
 
 class SolidEffectSetup : public EffectSetupBase
@@ -37,14 +36,14 @@ private:
 	} SolidSelectionButtons;
 
 	void initialise_main_interface(SolidSelectionButtons &buttons);
-	void setup_loop ();
+	void setup_loop () override;
 
 	RGBController rgbController;
 	SolidEffect *m_effect;
 
 public:
-	String name();
-	void engage();
+	String name() override;
+	void engage() override;
 	SolidEffectSetup(StickHardware hardware, PaintingStateMachine *state_machine, SolidEffect *effect);
 };
 
