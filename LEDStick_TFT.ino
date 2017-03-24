@@ -19,8 +19,15 @@
 
 
 #if defined(__AVR__)
-#include <URTouchCD.h>
+
+#define URTOUCH_USED
+
+#ifdef URTOUCH_USED
 #include <URTouch.h>
+#else
+#include <UTouch.h>
+#endif
+
 #include <UTFT_Buttons.h>
 #include <UTFT.h>
 #include <SD.h>
@@ -66,7 +73,12 @@ extern uint8_t arial_bold[];
 extern uint8_t Various_Symbols_32x32[];
 
 UTFT tft(ITDB32S, 38, 39, 40, 41);
-URTouch  touch(6, 5, 4, 3, 2);
+
+#ifdef URTOUCH_USED
+	URTouch  touch(6, 5, 4, 3, 2);
+#else
+	UTouch  touch(6, 5, 4, 3, 2);
+#endif
 UTFT_Buttons buttons (&tft, &touch);
 
 LEDStick *stick;

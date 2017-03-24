@@ -22,8 +22,14 @@
 	#include "WProgram.h"
 #endif
 
+#define URTOUCH_USED
+
 #include <UTFT.h>
-#include <URTouch.h>	
+#ifdef URTOUCH_USED
+#include <URTouch.h>
+#else
+#include <UTouch.h>
+#endif
 #include <UTFT_Buttons.h>
 #include "LEDStick.h"
 
@@ -32,7 +38,11 @@ class StickHardware
 public:
 	LEDStick *pStrip;
 	UTFT *pTft;
+#ifdef URTOUCH_USED
 	URTouch *pTouch;
+#else
+	UTouch *pTouch;
+#endif
 	UTFT_Buttons *pButtons;
 };
 
