@@ -16,9 +16,9 @@ The AdaFruit NeoPixel library can be retrieved from the usual sources and includ
 
 There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder.
 
-# Version 1 - UTFT/URTouch/UTFT_Buttons
+### Version 1 - UTFT/URTouch/UTFT_Buttons
 This set is the latest - it can also be retrieved from http://www.rinkydinkelectronics.com
-# Version 2 - UTFT/UTouch/UTFT_Buttons
+### Version 2 - UTFT/UTouch/UTFT_Buttons
 This set is the a version I had supplied with some Sainsmart hardware. Sainsmart use a knock-off version of the original UTFT libraries.
 
 By defual, LEDStick_TFT will use the UTouch libraries. If you have hardware capable of using the URTouch libraries, add the URTOUCH_USED preprocessor definition to your compilation parameters.
