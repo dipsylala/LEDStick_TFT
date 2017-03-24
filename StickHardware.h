@@ -22,8 +22,6 @@
 	#include "WProgram.h"
 #endif
 
-#define URTOUCH_USED
-
 #include <UTFT.h>
 #ifdef URTOUCH_USED
 #include <URTouch.h>

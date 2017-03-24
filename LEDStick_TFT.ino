@@ -20,8 +20,6 @@
 
 #if defined(__AVR__)
 
-#define URTOUCH_USED
-
 #ifdef URTOUCH_USED
 #include <URTouch.h>
 #else

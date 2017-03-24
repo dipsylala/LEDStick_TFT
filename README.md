@@ -12,10 +12,17 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 ## Installation
 
-There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder. Add these to your Arduino library. They're the latest versions, but UTFT needed tweaking for versions of the ITDB32S Sainsmart display (look in UTFT\tft_drivers\ssd1289).
-These libraries can also be retrieved from http://www.rinkydinkelectronics.com
-
 The AdaFruit NeoPixel library can be retrieved from the usual sources and included (https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation).
+
+There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder.
+
+# Version 1 - UTFT/URTouch/UTFT_Buttons
+This set is the latest - it can also be retrieved from http://www.rinkydinkelectronics.com
+# Version 2 - UTFT/UTouch/UTFT_Buttons
+This set is the a version I had supplied with some Sainsmart hardware. Sainsmart use a knock-off version of the original UTFT libraries.
+
+By defual, LEDStick_TFT will use the UTouch libraries. If you have hardware capable of using the URTouch libraries, add the URTOUCH_USED preprocessor definition to your compilation parameters.
+
 
 ### Using the Arduino IDE:
 * I've used Arduino IDE 1.5.8 and 1.8.1 for compile-testing
