@@ -14,15 +14,14 @@ Basically wanted to get back into C++ coding and playing with Arduinos :)
 
 The AdaFruit NeoPixel library can be retrieved from the usual sources and included (https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation).
 
-There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder.
+There are some 3rd party files for the TFT, Touch and buttons in the 3rd Party Libraries folder. Pick one, depending on your hardware and unzip it into your Arduino libraries folder so you have UTFT, UTFT_Buttons and UTouch/URTouch in the libraries folder.
 
-### Latest_UTFT_With_URTouch.zip - UTFT/URTouch/UTFT_Buttons
+### Latest_UTFT_With_URTouch - UTFT/URTouch/UTFT_Buttons
 This set is the latest - it can also be retrieved from http://www.rinkydinkelectronics.com
-### Sainsmart_UTFT_With_UTOUCH.zip - Includes UTFT/UTouch/UTFT_Buttons
+### Sainsmart_UTFT_With_UTOUCH - Includes UTFT/UTouch/UTFT_Buttons
 This set is the a version I had supplied with some Sainsmart hardware. Sainsmart use a knock-off version of the original UTFT libraries.
 
 By default LEDStick_TFT will use the UTouch libraries. If you have hardware capable of using the URTouch libraries, add the URTOUCH_USED preprocessor definition to your compilation parameters.
-
 
 ### Using the Arduino IDE:
 * I've used Arduino IDE 1.5.8 and 1.8.1 for compile-testing
