@@ -20,6 +20,7 @@ void StarEffectSetup::initialise_main_interface(StarSelectionButtons &buttons)
 	m_hardware.pButtons->deleteAllButtons();
 
 	m_hardware.pButtons->setTextFont(arial_bold);
+	m_hardware.pTft->setColor(255, 255, 255);
 	m_hardware.pTft->print(String("Gap Time"), 20, 30);
 	buttons.gap_time_slower = m_hardware.pButtons->addButton(220, 20, 40, 40, "a", BUTTON_SYMBOL);
 	buttons.gap_time_faster = m_hardware.pButtons->addButton(270, 20, 40, 40, "b", BUTTON_SYMBOL);
