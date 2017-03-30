@@ -39,6 +39,11 @@ void BitmapEffectSetup::initialise_main_interface(BitmapSelectionButtons &button
 
 	buttons.preview_button = m_hardware.pButtons->addButton(20, 100, 40, 40, "|", BUTTON_SYMBOL);
 
+	m_hardware.pTft->setFont(SmallFont);
+	m_hardware.pTft->setBackColor(0, 0, 0);
+	m_hardware.pTft->setColor(255, 255, 255);
+	m_hardware.pTft->print("Speed:", 170, 20);
+
 	buttons.back_button = add_back_button();
 	buttons.go_button = add_go_button();
 	m_hardware.pButtons->drawButtons();
@@ -183,7 +188,7 @@ void BitmapEffectSetup::display_frame_delay(uint32_t frame_delay)
 	// Also, we want slower to have a low percentage, and faster to have a higher percentage
 	uint8_t percentage = 100-((frame_delay) / 2);
 
-	m_hardware.pTft->print(String(percentage) + "% ", 170, 30);
+	m_hardware.pTft->print(String(percentage) + "% ", 170, 35);
 }
 
 void BitmapEffectSetup::display_time_to_show_bitmap(uint32_t frame_delay, Bitmap bitmap)
