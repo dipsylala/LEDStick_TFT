@@ -58,7 +58,7 @@ ConfigurationData GammaConfigurationManager::setup_loop()
 
 		if (pressed_button == buttons.gamma_down || pressed_button == buttons.gamma_up)
 		{
-			if (pressed_button == buttons.gamma_down && gamma > 0.1)
+			if (pressed_button == buttons.gamma_down && gamma > 1.1)
 			{
 				gamma = gamma - 0.1;
 			}
