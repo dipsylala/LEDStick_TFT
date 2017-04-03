@@ -85,6 +85,16 @@ void LEDStick::set_stick_brightness(uint8_t brightness)
 	m_neoPixel->show();
 }
 
+float LEDStick::get_stick_gamma()
+{
+	return m_gamma_level;
+}
+
+void LEDStick::set_stick_gamma(float gamma_level)
+{
+	m_gamma_level = gamma_level;
+}
+
 LEDStick::LEDStick(uint16_t num_pixels)
 {
 	m_num_pixels = num_pixels;

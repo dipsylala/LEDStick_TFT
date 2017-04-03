@@ -20,6 +20,7 @@ void EepromConfiguration::assign_default_values()
 	strncpy (loaded_data.version, CONFIG_VERSION, 3);
 	loaded_data.num_pixels = 1;
 	loaded_data.brightness = 255;
+	loaded_data.gamma_level = 2.5;
 }
 
 bool EepromConfiguration::same_configuration_version()

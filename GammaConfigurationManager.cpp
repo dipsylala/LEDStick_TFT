@@ -13,16 +13,16 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#include "BrightnessConfigurationManager.h"
+#include "GammaConfigurationManager.h"
 
-void BrightnessConfigurationManager::create_user_interface(BrightnessConfigurationManagerButtons *buttons)
+void GammaConfigurationManager::create_user_interface(GammaConfigurationManagerButtons *buttons)
 {
 	m_hardware.pButtons->deleteAllButtons();
 	m_hardware.pTft->setColor(255, 255, 255);
 	m_hardware.pButtons->setTextFont(arial_bold);
 
-	buttons->brightness_down = m_hardware.pButtons->addButton(220, 20, 40, 40, "a", BUTTON_SYMBOL);
-	buttons->brightness_up = m_hardware.pButtons->addButton(270, 20, 40, 40, "b", BUTTON_SYMBOL);
+	buttons->gamma_down = m_hardware.pButtons->addButton(220, 20, 40, 40, "a", BUTTON_SYMBOL);
+	buttons->gamma_up = m_hardware.pButtons->addButton(270, 20, 40, 40, "b", BUTTON_SYMBOL);
 
 	buttons->cancel_button = m_hardware.pButtons->addButton(10, 180, 120, 40, "Cancel");
 	buttons->ok_button = m_hardware.pButtons->addButton(180, 180, 120, 40, "OK");
@@ -30,54 +30,47 @@ void BrightnessConfigurationManager::create_user_interface(BrightnessConfigurati
 	m_hardware.pButtons->drawButtons();
 }
 
-void BrightnessConfigurationManager::display_current_brightness(uint8_t brightness)
+void GammaConfigurationManager::display_current_gamma(float gamma)
 {
 	m_hardware.pTft->setColor(255, 255, 255);
 	m_hardware.pTft->setFont(arial_bold);
-	m_hardware.pTft->print("Bright: " + String((brightness * 100) /255 ) + "% ", 20, 30);
-	m_hardware.pStrip->set_stick_brightness(brightness);
+	m_hardware.pTft->print("Gamma: " + String(gamma), 20, 30);
+	m_hardware.pStrip->set_stick_gamma(gamma);
 }
 
-ConfigurationData BrightnessConfigurationManager::setup_loop()
+ConfigurationData GammaConfigurationManager::setup_loop()
 {
 	EepromConfiguration configuration;
 	ConfigurationData configuration_settings = configuration.read_configuration();
-	BrightnessConfigurationManagerButtons buttons;
+	GammaConfigurationManagerButtons buttons;
 	create_user_interface(&buttons);
 
 	boolean ok_pressed = false;
 	boolean cancel_pressed = false;
 
-	uint8_t brightness = configuration_settings.brightness;
+	float gamma = configuration_settings.gamma_level;
 
-	display_current_brightness(brightness);
-
-	for (int i = 0; i < 20; i++)
-	{
-		m_hardware.pStrip->set_pixel_color(i, 255, 255, 255);
-	}
-
-	m_hardware.pStrip->commit();
+	display_current_gamma(gamma);
 
 	while (ok_pressed == false && cancel_pressed == false)
 	{
 		int pressed_button = m_hardware.pButtons->checkButtons();
 
-		if (pressed_button == buttons.brightness_down || pressed_button == buttons.brightness_up)
+		if (pressed_button == buttons.gamma_down || pressed_button == buttons.gamma_up)
 		{
-			if (pressed_button == buttons.brightness_down && brightness > 10)
+			if (pressed_button == buttons.gamma_down && gamma > 0.1)
 			{
-				brightness = brightness - 5;
+				gamma = gamma - 0.1;
 			}
 
-			if (pressed_button == buttons.brightness_up && brightness < 255)
+			if (pressed_button == buttons.gamma_up && gamma < 5)
 			{
-				brightness = brightness + 5;
+				gamma = gamma + 0.1;
 			}
 
-			m_hardware.pStrip->set_stick_brightness(brightness);
+			m_hardware.pStrip->set_stick_gamma(gamma);
 
-			display_current_brightness(brightness);
+			display_current_gamma(gamma);
 		}
 
 		if (pressed_button == buttons.cancel_button)
@@ -93,7 +86,7 @@ ConfigurationData BrightnessConfigurationManager::setup_loop()
 
 	if (ok_pressed)
 	{
-		configuration_settings.brightness = brightness;
+		configuration_settings.gamma_level = gamma;
 		configuration.write_configuration(configuration_settings);
 	}
 
@@ -105,17 +98,17 @@ ConfigurationData BrightnessConfigurationManager::setup_loop()
 	return configuration_settings;
 }
 
-ConfigurationData BrightnessConfigurationManager::engage()
+ConfigurationData GammaConfigurationManager::engage()
 {
 	m_hardware.pTft->clrScr();
 	m_hardware.pTft->setFont(arial_bold);
 	m_hardware.pTft->setColor(255, 0, 255);
-	m_hardware.pTft->print("Brightness Setup", CENTER, 0);
+	m_hardware.pTft->print("Gamma Setup", CENTER, 0);
 
 	return setup_loop();
 }
 
-BrightnessConfigurationManager::BrightnessConfigurationManager(StickHardware hardware)
+GammaConfigurationManager::GammaConfigurationManager(StickHardware hardware)
 {
 	m_hardware = hardware;
 }

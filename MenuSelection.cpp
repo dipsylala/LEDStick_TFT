@@ -15,13 +15,14 @@
 
 #include "MenuSelection.h"
 
-MenuSelection::MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, LengthConfigurationManager *length_configuration_manager, BrightnessConfigurationManager *brightness_configuration_manager)
+MenuSelection::MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, LengthConfigurationManager *length_configuration_manager, BrightnessConfigurationManager *brightness_configuration_manager, GammaConfigurationManager *gamma_configuration_manager)
 {
 	m_hardware = hardware;
 	m_effect_setups = effects;
 	m_total_effects = num_effects;
 	m_length_configuration_manager = length_configuration_manager;
 	m_brightness_configuration_manager = brightness_configuration_manager;
+	m_gamma_configuration_manager = gamma_configuration_manager;
 }
 
 void MenuSelection::initialise_mode_selection_menu()
@@ -31,8 +32,10 @@ void MenuSelection::initialise_mode_selection_menu()
 
 	m_hardware.pButtons->deleteAllButtons();
 	m_hardware.pButtons->setTextFont(arial_bold);
+
 	m_length_setup_button = m_hardware.pButtons->addButton(10, 10, 80, 60, "~", BUTTON_SYMBOL);
 	m_brightness_setup_button = m_hardware.pButtons->addButton(90, 10, 80, 60, "}", BUTTON_SYMBOL);
+	m_gamma_setup_button = m_hardware.pButtons->addButton(170, 10, 80, 60, "{", BUTTON_SYMBOL);
 	m_select_button = m_hardware.pButtons->addButton(10, 90, 300, 60, "");
 	m_previous_button = m_hardware.pButtons->addButton(220, 180, 40, 40, "a", BUTTON_SYMBOL);
 	m_next_button = m_hardware.pButtons->addButton(270, 180, 40, 40, "b", BUTTON_SYMBOL);
@@ -100,12 +103,17 @@ void MenuSelection::run()
 			set_selected_processor(selected_processor_index);
 		}
 
-		if (pressed_button == m_length_setup_button || pressed_button == m_brightness_setup_button)
+		if (pressed_button == m_length_setup_button || pressed_button == m_brightness_setup_button || pressed_button == m_gamma_setup_button)
 		{
 			ConfigurationData config_data;
 			if (pressed_button == m_length_setup_button)
 			{
 				config_data = m_length_configuration_manager->engage();
+			}
+
+			if (pressed_button == m_gamma_setup_button)
+			{
+				config_data = m_gamma_configuration_manager->engage();
 			}
 
 			if (pressed_button == m_brightness_setup_button)
@@ -116,6 +124,7 @@ void MenuSelection::run()
 			initialise_mode_selection_menu();
 			m_hardware.pStrip->set_stick_length(config_data.num_pixels);
 			m_hardware.pStrip->set_stick_brightness(config_data.brightness);
+			m_hardware.pStrip->set_stick_gamma(config_data.gamma_level);
 			set_selected_processor(selected_processor_index);
 		}
 

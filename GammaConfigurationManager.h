@@ -13,8 +13,8 @@
 // You should have received a copy of the GNU General Public License
 // along with LEDStick_TFT.If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef _LEDSTICK_h
-#define _LEDSTICK_h
+#ifndef _GAMMACONFIGURATIONMANAGER_h
+#define _GAMMACONFIGURATIONMANAGER_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -22,35 +22,35 @@
 	#include "WProgram.h"
 #endif
 
-#include <Adafruit_NeoPixel.h>
-#include "RGB.h"
+#include "StickHardware.h"
+#include "EepromConfiguration.h"
 
-#define GPIO_PIN 8 
+extern uint8_t arial_bold[];
+extern uint8_t SmallFont[];
 
-class LEDStick
+class GammaConfigurationManager
 {
 private:
-	Adafruit_NeoPixel *m_neoPixel;
-	uint16_t m_num_pixels;
-	float m_gamma_level;
+
+	typedef struct
+	{
+		uint16_t cancel_button;
+		uint16_t ok_button;
+		uint16_t gamma_down;
+		uint16_t gamma_up;
+	} GammaConfigurationManagerButtons;
+
+	StickHardware m_hardware;
+
+	ConfigurationData setup_loop();
+	void create_user_interface(GammaConfigurationManagerButtons *buttons);
+	void display_current_gamma(float gamma);
 
 public:
-	void set_total_strip_colour(RGB colour);
-	void set_total_strip_colour(uint8_t red, uint8_t green, uint8_t blue);
-	void set_rgb_strip_color(RGB* colours, uint16_t num_rgb);
-
-	void commit();
-	void clear_strip(bool commit = true);
-	void set_pixel_color(uint16_t pixel_index, uint8_t red, uint8_t green, uint8_t blue);
-	void set_stick_length(uint16_t length);
-	uint16_t get_stick_length();
-	void set_stick_gamma(float gamma_level);
-	float get_stick_gamma();
-	uint8_t get_stick_brightness();
-	void set_stick_brightness(uint8_t brightness);
-	LEDStick(uint16_t num_pixels);
-
+	ConfigurationData engage();
+	GammaConfigurationManager(StickHardware hardware);
 };
+
 
 #endif
 

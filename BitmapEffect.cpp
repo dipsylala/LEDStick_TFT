@@ -77,7 +77,6 @@ void BitmapEffect::start_painting(Bitmap &bitmap, uint32_t frame_delay, bool rep
 				}
 				else
 				{
-					unsigned long stop = millis();
 					m_state_machine->set_state(StoppedPainting);
 				}
 			}

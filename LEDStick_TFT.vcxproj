@@ -98,6 +98,7 @@
     <ClInclude Include="BitmapEffect.h" />
     <ClInclude Include="BitmapInfo.h" />
     <ClInclude Include="BitmapEffectSetup.h" />
+    <ClInclude Include="GammaConfigurationManager.h" />
     <ClInclude Include="LengthConfigurationManager.h" />
     <ClInclude Include="EepromConfiguration.h" />
     <ClInclude Include="FadeBase.h" />
@@ -127,6 +128,7 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="BitmapEffect.cpp" />
     <ClCompile Include="BitmapEffectSetup.cpp" />
+    <ClCompile Include="GammaConfigurationManager.cpp" />
     <ClCompile Include="LengthConfigurationManager.cpp" />
     <ClCompile Include="EepromConfiguration.cpp" />
     <ClCompile Include="FadeBase.cpp" />

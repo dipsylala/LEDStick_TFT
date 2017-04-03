@@ -21,6 +21,7 @@
 #if defined(__AVR__)
 
 #ifdef URTOUCH_USED
+#include "GammaCorrection.h"
 #include <URTouch.h>
 #else
 #include <UTouch.h>
@@ -65,6 +66,7 @@
 #elif defined(__arm__)
 #define imagedatatype  unsigned short
 #endif
+#include "GammaConfigurationManager.h"
 
 extern uint8_t SmallFont[];
 extern uint8_t arial_bold[];
@@ -116,6 +118,7 @@ void setup()
 	Serial.println("Initialising LEDStick");
 
 	hardware.pStrip = new LEDStick(config_data.num_pixels);
+	hardware.pStrip->set_stick_gamma(config_data.gamma_level);
 	hardware.pTft = &tft;
 	hardware.pTft->InitLCD();
 	hardware.pTft->clrScr();
@@ -142,8 +145,9 @@ void loop()
 
 	LengthConfigurationManager *length_configuration_manager = new LengthConfigurationManager(hardware);
 	BrightnessConfigurationManager *brightness_configuration_manager = new BrightnessConfigurationManager(hardware);
+	GammaConfigurationManager *gamma_configuration_manager = new GammaConfigurationManager(hardware);
 
-	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, length_configuration_manager, brightness_configuration_manager);
+	MenuSelection *menu_selection = new MenuSelection(hardware, effects, num_effects, length_configuration_manager, brightness_configuration_manager, gamma_configuration_manager);
 	menu_selection->run();
 
 	for (uint32_t i = 0; i < num_effects; i++)

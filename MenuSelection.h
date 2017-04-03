@@ -26,6 +26,7 @@
 #include "EffectSetupBase.h"
 #include "LengthConfigurationManager.h"
 #include "BrightnessConfigurationManager.h"
+#include "GammaConfigurationManager.h"
 
 extern uint8_t arial_bold[];
 
@@ -36,20 +37,21 @@ private:
 	EffectSetupBase **m_effect_setups;
 	LengthConfigurationManager *m_length_configuration_manager;
 	BrightnessConfigurationManager *m_brightness_configuration_manager;
+	GammaConfigurationManager *m_gamma_configuration_manager;
 
 	uint32_t m_previous_button;
 	uint32_t m_select_button;
 	uint32_t m_next_button;
 	uint32_t m_length_setup_button;
 	uint32_t m_brightness_setup_button;
-
+	uint32_t m_gamma_setup_button;
 	uint32_t m_total_effects = 0;
 
 	void initialise_mode_selection_menu();
 	void set_selected_processor(int selected_mode);
 
 public:
-	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, LengthConfigurationManager *length_configuration_manager, BrightnessConfigurationManager *brightness_configuration_manager);
+	MenuSelection(StickHardware hardware, EffectSetupBase **effects, int num_effects, LengthConfigurationManager *length_configuration_manager, BrightnessConfigurationManager *brightness_configuration_manager, GammaConfigurationManager *gamma_configuration_manager);
 	void run();
 };
 

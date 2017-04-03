@@ -39,12 +39,12 @@
 class Bitmap
 {
  protected:
-	 static PROGMEM const uint8_t gammaTable[256];
+	 uint8_t gammaTable[255];
 
 	 uint32_t read_long_from_file(File dataFile);
 	 uint16_t read_int_from_file(File dataFile);
 	 int read_byte_from_file(File dataFile);
-	 inline byte gamma(byte x);
+	 
 	 boolean validate_is_bitmap(BitmapInfo *bitmap_info);
 	 boolean validate_is_supported_bitmap(BitmapInfo *bitmap_info);
 	 
@@ -55,6 +55,7 @@ class Bitmap
 	 String filename;
 	 int32_t read_bitmap_info(File bitmap_file);
 	 void read_image_line(File bitmap_file, uint32_t line_number, RGB*rgb_line, uint32_t rgb_length);
+	 void set_gamma(float gamma);
 };
 
 

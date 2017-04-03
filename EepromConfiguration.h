@@ -24,13 +24,14 @@
 
 #include<eeprom.h>
 
-#define CONFIG_VERSION "002"
+#define CONFIG_VERSION "003"
 #define CONFIG_START 32
 
 typedef struct  {
 	char version[4];
 	uint16_t num_pixels;
 	uint8_t brightness;
+	float gamma_level;
 } ConfigurationData;
 
 class EepromConfiguration

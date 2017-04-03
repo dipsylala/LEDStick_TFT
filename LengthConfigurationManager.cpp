@@ -134,7 +134,7 @@ ConfigurationData LengthConfigurationManager::engage()
 	m_hardware.pTft->clrScr();
 	m_hardware.pTft->setFont(arial_bold);
 	m_hardware.pTft->setColor(255, 0, 255);
-	m_hardware.pTft->print("Setup", CENTER, 0);
+	m_hardware.pTft->print("Length Setup", CENTER, 0);
 
 	return setup_loop();
 }

@@ -105,12 +105,12 @@ void BitmapEffectSetup::clear_stored_files(bool free_allocated_bitmaps)
 {
 	for (int i = 0; i < 255; i++)
 	{
-		if (free_allocated_bitmaps && m_bitmap_filenames[i] != NULL)
+		if (free_allocated_bitmaps && m_bitmap_filenames[i] != nullptr)
 		{
 			delete m_bitmap_filenames[i];
 		}
 
-		m_bitmap_filenames[i] = NULL;
+		m_bitmap_filenames[i] = nullptr;
 	}
 }
 
@@ -286,7 +286,9 @@ void BitmapEffectSetup::setup_loop()
 
 	BitmapSelectionButtons bitmap_selection_buttons;
 	initialise_main_interface(bitmap_selection_buttons);
-	
+
+	m_current_bitmap.set_gamma(m_hardware.pStrip->get_stick_gamma());
+
 	display_frame_delay(frame_delay);
 	retrieve_bitmap_details(*(m_bitmap_filenames[m_current_file_index]));
 	display_time_to_show_bitmap(frameDelay, m_current_bitmap);
@@ -412,6 +414,7 @@ void BitmapEffectSetup::engage()
 	bool sd_card_setup = setup_sdcard();
 
 	m_hardware.pButtons->deleteAllButtons();
+	
 
 	if (sd_card_setup == false)
 	{
