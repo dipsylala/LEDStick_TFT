@@ -105,12 +105,12 @@ void BitmapEffectSetup::clear_stored_files(bool free_allocated_bitmaps)
 {
 	for (int i = 0; i < 255; i++)
 	{
-		if (free_allocated_bitmaps && m_bitmap_filenames[i] != nullptr)
+		if (free_allocated_bitmaps && m_bitmap_filenames[i] != NULL)
 		{
 			delete m_bitmap_filenames[i];
 		}
 
-		m_bitmap_filenames[i] = nullptr;
+		m_bitmap_filenames[i] = NULL;
 	}
 }
 
